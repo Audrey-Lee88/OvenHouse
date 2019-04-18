@@ -2,6 +2,7 @@ import configparser
 
 import pygame
 import pygame.locals as pg
+import random
 
 # Motion offsets for particular directions
 #     N  E  S   W
@@ -102,6 +103,37 @@ class Sprite(pygame.sprite.Sprite):
         """Run the current animation."""
 
         next(self.animation)
+
+class Enemy(Sprite):
+
+    def __init__(self, pos=(2, 1)):
+        self.frames = SPRITE_CACHE["skeleton.png"]
+        Sprite.__init__(self, pos)
+        self.direction = 0
+        self.animation = None
+        self.image = self.frames[self.direction][0]
+
+    def walk_animation(self):
+        """Animation for the player walking."""
+
+        # This animation is hardcoded for 4 frames and 16x24 map tiles
+        for frame in range(0,3):
+            self.image = self.frames[0][frame]
+            yield None
+            self.move(3*DX[self.direction], 2*DY[self.direction])
+            yield None
+            self.move(3*DX[self.direction], 2*DY[self.direction])
+
+    def update(self, *args):
+        """Run the current animation or just stand there if no animation set."""
+
+        if self.animation is None:
+            self.image = self.frames[0][0]
+        else:
+            try:
+                next(self.animation)
+            except StopIteration:
+                self.animation = None
 
 class Player(Sprite):
     """ Display and animate the player character."""
@@ -266,11 +298,16 @@ class Game(object):
         self.sprites = SortedUpdates()
         self.overlays = pygame.sprite.RenderUpdates()
         self.level = level
+        self.enemynum = []
         # Populate the game with the level's objects
         for pos, tile in level.items.items():
             if tile.get("player") in ('true', '1', 'yes', 'on'):
                 sprite = Player(pos)
                 self.player = sprite
+            elif tile.get("enemy") in ('true', '1', 'yes', 'on'):
+                sprite = Enemy(pos)
+                self.enemynum += [sprite]
+                self.enemy = self.enemynum
             else:
                 sprite = Sprite(pos, SPRITE_CACHE[tile["sprite"]])
             self.sprites.add(sprite)
@@ -282,6 +319,18 @@ class Game(object):
             overlay = pygame.sprite.Sprite(self.overlays)
             overlay.image = image
             overlay.rect = image.get_rect().move(x*24, y*16-16)
+
+    def enemy_walk(self,enemy):
+        x,y = enemy.pos
+        enemy.direction = enemy.de
+        if not self.level.is_blocking(x+DX[enemy.de],y+DY[enemy.de]):
+            enemy.animation = enemy.walk_animation()
+            return enemy.de
+        else:
+            if enemy.de == 2:
+                return 0
+            elif enemy.de == 0:
+                return 2
 
     def control(self):
         """Handle the controls of the game."""
@@ -313,7 +362,8 @@ class Game(object):
 
     def main(self):
         """Run the main loop."""
-
+        for i in range(len(self.enemynum)):
+            self.enemy[i].de = 2
         clock = pygame.time.Clock()
         # Draw the whole screen initially
         self.screen.blit(self.background, (0, 0))
@@ -328,6 +378,13 @@ class Game(object):
             if self.player.animation is None:
                 self.control()
                 self.player.update()
+            for i in range(len(self.enemynum)):
+                if self.player.pos == self.enemy[i].pos:
+                    print('Game Over')
+                    exit()
+                elif self.enemy[i].animation is None:
+                    self.enemy[i].de = self.enemy_walk(self.enemy[i])
+                    self.enemy[i].update()
             # Don't add shadows to dirty rectangles, as they already fit inside
             # sprite rectangles.
 
@@ -339,6 +396,7 @@ class Game(object):
             pygame.display.update(dirty)
             # Wait for one tick of the game clock
             clock.tick(15)
+
             # Process pygame events
             for event in pygame.event.get():
                 if event.type == pg.QUIT:
@@ -349,7 +407,8 @@ class Game(object):
 if __name__ == "__main__":
     SPRITE_CACHE = TileCache()
     MAP_CACHE = TileCache(MAP_TILE_WIDTH, MAP_TILE_HEIGHT)
-    TILE_CACHE = TileCache(32, 32)
+    TILE_CACHE = TileCache(16, 24)
     pygame.init()
-    pygame.display.set_mode((424, 320))
+
+    pygame.display.set_mode((1200, 500))
     Game().main()
