@@ -12,5 +12,5 @@ To run OvenHouse download the following libraries: pygames, time, X, X, X, X. Af
 Anyone is welcome to use this code. We have opted into the Open Source Initiative's goal of an open & free internet. 
 "The license shall not restrict any party from selling or giving away the software as a component of an aggregate software distribution containing programs from several different sources. The license shall not require a royalty or other fee for such sale."
 
-**What is the goal of this project?"**: 
+**What is the goal of this project?**: 
 The purpose is to enable people to entertain their lives away.
