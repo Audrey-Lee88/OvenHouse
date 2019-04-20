@@ -1,6 +1,4 @@
-OvenHouse
-
-# Bringing folk tradition to the next generation. Put down your work and jump into the world of Hansel & Gretel!
+# Welcome to OvenHouse!
 
 ## Project Description 
 
