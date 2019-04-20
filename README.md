@@ -31,6 +31,9 @@ The purpose is to enable people to entertain their lives away.
 
 ## Authors
 [**Audrey Lee**](https://github.com/Audrey-Lee88)
+
 [**HK Rho**](https://github.com/hkRho)
+
 [**Kristtiya Guerra**](https://github.com/Kristtiya)
+
 [**Caleb Wursten**](https://github.com/calebwursten)
