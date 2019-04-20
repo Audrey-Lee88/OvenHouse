@@ -2,7 +2,7 @@ import pygame
 import time
 
 pygame.init()
-#
+#dimensions of the screen
 display_width = 800
 display_height = 200
 
@@ -12,7 +12,7 @@ Time = 0
 Second = 0
 Minute = 0
 Hour = 0
-counter=0
+counter= 0
 
 #Colour
 Black = (0,0,0)
@@ -34,13 +34,17 @@ MinuteFont = Font.render("Second:{0:02}".format(Second),1, Black) #zero-pad minu
 MinuteFontR=MinuteFont.get_rect()
 MinuteFontR.center=(1200,20)
 
+#Clock functioning
 Clock = pygame.time.Clock()
 CLOCKTICK = pygame.USEREVENT+1
 pygame.time.set_timer(CLOCKTICK, 1000) # fired once every second
 
+#background image dimensions
 size = width, height = 1280, 720 #Make sure background image is same size
 screen = pygame.display.set_mode(size)
 screen.fill(White)
+
+#counting
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
