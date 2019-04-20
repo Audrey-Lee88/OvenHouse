@@ -14,7 +14,7 @@ python -m pip install -U pygame --user
 ```
 After these libraries have been downloaded, also download the artwork to a file accessible by our master code
 
-## Usuage
+## Usage
 ### Run Program 
 ```bash
 python OvenHouse.py 
