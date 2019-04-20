@@ -4,7 +4,7 @@
 &nbsp;
 
 # Welcome to OvenHouse!
-### Bringing folk tradition to the next generation. Put down your work and jump into the world of Hansel & Gretel!	
+
 ![Hansel & Gretel](https://thestoryshack.com/wp-content/uploads/2017/06/hansel-and-gretel-940x540.jpg)
 ## Project Description 
 
