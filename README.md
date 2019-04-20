@@ -6,7 +6,18 @@ Welcome to the OvenHouse repository. This is a game that creates a suspensful ex
 
 The goal of this game is to reintroduce fairy tales and folk traditions to the next generation in a modern style; to keep us connected with our past while modifying it so that it fits the current trend.
 
-## Prerequisites
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+Clone this repo to your local machine: `git clone https://github.com/hkRho/OvenHouse.git`
+
+### Prerequisites
+Please upgrade your Linux dependecies:
+```
+sudo apt-get update
+sudo apt-get upgrade
+```
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install packages
 
@@ -21,13 +32,15 @@ After these libraries have been downloaded, also download the artwork to a file 
 python OvenHouse.py 
 ```
 
-## Using this repo/project
+#### License
 
 Anyone is welcome to use this code. We have opted into the Open Source Initiative's goal of an open & free internet. 
 "The license shall not restrict any party from selling or giving away the software as a component of an aggregate software distribution containing programs from several different sources. The license shall not require a royalty or other fee for such sale."
 
+#### Acknowledgments
 
-## Authors
+
+#### Authors
 [**Audrey Lee**](https://github.com/Audrey-Lee88)
 
 [**HK Rho**](https://github.com/hkRho)
