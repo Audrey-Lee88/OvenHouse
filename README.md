@@ -1,16 +1,37 @@
-###
-# OvenHouse
-###
+# Welcome to OvenHouse!
+![Hansel & Gretel](https://thestoryshack.com/wp-content/uploads/2017/06/hansel-and-gretel-940x540.jpg)
+## Project Description 
 
-**Introduction of the repo/project** </br>
-Welcome to the OvenHouse repository. You will find several files necessary for the operation of the OvenHouse game, including: images, the master file, and X number of supporting code files.
+Welcome to the OvenHouse repository. This is a game that creates a suspensful experience for the player. It is based off of the Grimm Fairy Tale *Hansel and Gretel*.
 
-**Running the Code** </br>
-To run OvenHouse download the following libraries: pygames, time, X, X, X, X. After these libraries have been downloaded, also download the artwork to a file accessible by our master code. Finally, run the master code.
+The goal of this game is to reintroduce fairy tales and folk traditions to the next generation in a modern style; to keep us connected with our past while modifying it so that it fits the current trend.
 
-**Using this repo/project** </br>
+## Prerequisites
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install packages
+
+```bash
+python -m pip install -U pygame --user
+```
+After these libraries have been downloaded, also download the artwork to a file accessible by our master code
+
+## Usage
+### Run Program 
+```bash
+python OvenHouse.py 
+```
+
+## Using this repo/project
+
 Anyone is welcome to use this code. We have opted into the Open Source Initiative's goal of an open & free internet. 
 "The license shall not restrict any party from selling or giving away the software as a component of an aggregate software distribution containing programs from several different sources. The license shall not require a royalty or other fee for such sale."
 
-**Goal of this project** </br>
-The purpose is to enable people to entertain their lives away.
+
+## Authors
+[**Audrey Lee**](https://github.com/Audrey-Lee88)
+
+[**HK Rho**](https://github.com/hkRho)
+
+[**Kristtiya Guerra**](https://github.com/Kristtiya)
+
+[**Caleb Wursten**](https://github.com/calebwursten)
