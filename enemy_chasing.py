@@ -2,6 +2,7 @@ import pygame
 import sys
 import os
 import math
+import random
 
 pygame.init()
 pygame.display.init()
@@ -22,7 +23,7 @@ class Player(pygame.sprite.Sprite):
         self.frame = 0 # count frames
 
         self.images = []
-        img = pygame.image.load(os.path.join('images','hero.png')).convert()
+        img = pygame.image.load(os.path.join('images','characters.png')).convert()
         self.images.append(img)
         self.image = self.images[0]
         self.rect  = self.image.get_rect()
@@ -75,6 +76,24 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x -= dx * 20
         self.rect.y -= dy * 20
 
+class Key(pygame.sprite.Sprite):
+    def __init__(self, x, y, img):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(os.path.join('images',img))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    ### now have to make two keys not overlap
+    def random_location(self):
+        location_set = [(100,100), (700,600), (200,700), (300, 400), (700, 100)]
+        random_locations = random.sample(location_set, 1)
+        first_location = random_locations[0]
+        self.rect.x = first_location[0]
+        self.rect.y = first_location[1]
+
+    # def generate_keys(self):
+
 
 '''
 Setup
@@ -100,6 +119,15 @@ player_list = pygame.sprite.Group()
 player_list.add(player)
 steps = 5
 
+key1 = Key(200, 300, "key1_small.png")
+key1.random_location()
+key_list = pygame.sprite.Group()
+key_list.add(key1)
+
+key2 = Key(500, 600, "key2_small.png")
+key2.random_location()
+key_list.add(key2)
+
 enemy = Enemy(500,200,'slime.png')
 enemy_list = pygame.sprite.Group()   # create enemy group
 enemy_list.add(enemy)                # add enemy to group
@@ -122,7 +150,11 @@ while True:
                 player.control(steps,0)
                 enemy.move_towards_player(player)
             if event.key == pygame.K_UP or event.key == ord('w'):
-                print('jump')
+                player.control(0, steps)
+                enemy.move_towards_player(player)
+            if event.key == pygame.K_DOWN or event.key == ord('w'):
+                player.control(0, -steps)
+                enemy.move_towards_player(player)
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
@@ -131,13 +163,17 @@ while True:
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
                 player.control(-steps,0)
                 enemy.move_towards_player(player)
-            if event.key == ord('q'):
-                pygame.quit()
-                sys.exit()
+            if event.key == pygame.K_UP or event.key == ord('w'):
+                player.control(0, -steps)
+                enemy.move_towards_player(player)
+            if event.key == pygame.K_DOWN or event.key == ord('w'):
+                player.control(0, steps)
+                enemy.move_towards_player(player)
 
 
 
     world.blit(backdrop, backdropbox)
+    key_list.draw(world)
     player.update()  # update player position
     player_list.draw(world) # draw player
     enemy_list.draw(world)
