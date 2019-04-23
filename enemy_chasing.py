@@ -126,6 +126,8 @@ key_list.add(key1)
 
 key2 = Key(500, 600, "key2_small.png")
 key2.random_location()
+if key1.rect.x == key2.rect.x and key1.rect.y == key2.rect.y:
+    key2.random_location()
 key_list.add(key2)
 
 enemy = Enemy(500,200,'slime.png')
