@@ -3,7 +3,7 @@
 ## About Us
 
 # Audrey Lee
-![](https://github.com/hkRho/OvenHouse/blob/master/docs/images/audrey.jpg)
+![](https://github.com/hkRho/OvenHouse/blob/master/docs/images/audrey.png)
 Class of 2022 at Olin College of Engineering
 
 # HK Rho
@@ -11,9 +11,9 @@ Class of 2022 at Olin College of Engineering
 Class of 2022 at Olin College of Engineering
 
 # Caleb Wursten
-![](https://github.com/hkRho/OvenHouse/blob/master/docs/images/caleb.jpg)
+![](https://github.com/hkRho/OvenHouse/blob/master/docs/images/caleb.png)
 Class of 2019 at Babson College
 
 # Kristtiya Guerra
-![](https://github.com/hkRho/OvenHouse/blob/master/docs/images/kristtiya.jpg)
+![](https://github.com/hkRho/OvenHouse/blob/master/docs/images/kristtiya.png)
 Class of 2022 at Olin College of Engineering
