@@ -3,21 +3,21 @@
 ## About Us
 
 # Audrey Lee
-![Audrey](docs/images/audrey.png) 
+![Audrey](audrey.png) 
 
 Class of 2022 at Olin College of Engineering
 
 # HK Rho
-![HK](docs/images/hk.png) 
+![HK](hk.png) 
 
 Class of 2022 at Olin College of Engineering
 
 # Caleb Wursten
-![Caleb](docs/images/caleb.png) 
+![Caleb](caleb.png) 
 
 Class of 2019 at Babson College
 
 # Kristtiya Guerra
-![Kristtiya](docs/images/kristtiya.png) 
+![Kristtiya](kristtiya.png) 
 
 Class of 2022 at Olin College of Engineering
