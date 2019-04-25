@@ -104,6 +104,34 @@ class Sprite(pygame.sprite.Sprite):
 
         next(self.animation)
 
+class Key(Sprite):
+
+    def __init__(self, pos=(3, 1)):
+        self.frames = SPRITE_CACHE["key.png"]
+        Sprite.__init__(self, pos)
+        self.direction = 0
+        self.animation = None
+        self.image = self.frames[self.direction][0]
+
+    def walk_animation(self):
+        """Animation for the enemy walking."""
+
+        # This animation is hardcoded for 4 frames and 16x24 map tiles
+        for frame in range(0,1):
+            self.image = self.frames[0][frame]
+            yield None
+
+    def update(self, *args):
+        """Run the current animation or just stand there if no animation set."""
+
+        if self.animation is None:
+            self.image = self.frames[0][0]
+        else:
+            try:
+                next(self.animation)
+            except StopIteration:
+                self.animation = None
+
 class Enemy(Sprite):
 
     def __init__(self, pos=(2, 1)):
@@ -114,15 +142,15 @@ class Enemy(Sprite):
         self.image = self.frames[self.direction][0]
 
     def walk_animation(self):
-        """Animation for the player walking."""
+        """Animation for the enemy walking."""
 
         # This animation is hardcoded for 4 frames and 16x24 map tiles
         for frame in range(0,3):
             self.image = self.frames[0][frame]
             yield None
-            self.move(3*DX[self.direction], 2*DY[self.direction])
+            self.move(2*DX[self.direction], DY[self.direction])
             yield None
-            self.move(3*DX[self.direction], 2*DY[self.direction])
+            self.move(2*DX[self.direction], DY[self.direction])
 
     def update(self, *args):
         """Run the current animation or just stand there if no animation set."""
@@ -186,8 +214,8 @@ class Level(object):
 
         parser = configparser.ConfigParser()
         parser.read(filename)
-        self.tileset = parser.get("level", "tileset")
-        self.map = parser.get("level", "map").split("\n")
+        self.tileset = parser.get("level1", "tileset")
+        self.map = parser.get("level1", "map").split("\n")
         for section in parser.sections():
             if len(section) == 1:
                 desc = dict(parser.items(section))
@@ -299,6 +327,7 @@ class Game(object):
         self.overlays = pygame.sprite.RenderUpdates()
         self.level = level
         self.enemynum = []
+        self.keynum = []
         # Populate the game with the level's objects
         for pos, tile in level.items.items():
             if tile.get("player") in ('true', '1', 'yes', 'on'):
@@ -308,6 +337,10 @@ class Game(object):
                 sprite = Enemy(pos)
                 self.enemynum += [sprite]
                 self.enemy = self.enemynum
+            elif tile.get("key") in ('true', '1', 'yes', 'on'):
+                sprite = Key(pos)
+                self.keynum += [sprite]
+                self.key = self.keynum
             else:
                 sprite = Sprite(pos, SPRITE_CACHE[tile["sprite"]])
             self.sprites.add(sprite)
@@ -320,6 +353,7 @@ class Game(object):
             overlay.image = image
             overlay.rect = image.get_rect().move(x*24, y*16-16)
 
+
     def enemy_walk(self,enemy):
         x,y = enemy.pos
         enemy.direction = enemy.de
@@ -331,6 +365,10 @@ class Game(object):
                 return 0
             elif enemy.de == 0:
                 return 2
+            elif enemy.de == 1:
+                return 3
+            elif enemy.de == 3:
+                return 1
 
     def control(self):
         """Handle the controls of the game."""
@@ -363,7 +401,7 @@ class Game(object):
     def main(self):
         """Run the main loop."""
         for i in range(len(self.enemynum)):
-            self.enemy[i].de = 2
+            self.enemy[i].de = random.randint(0,3)
         clock = pygame.time.Clock()
         # Draw the whole screen initially
         self.screen.blit(self.background, (0, 0))
@@ -378,6 +416,9 @@ class Game(object):
             if self.player.animation is None:
                 self.control()
                 self.player.update()
+            for i in range(len(self.keynum)):
+                if self.player.pos == self.key[i].pos:
+                    print('Gotcha')
             for i in range(len(self.enemynum)):
                 if self.player.pos == self.enemy[i].pos:
                     print('Game Over')
@@ -410,5 +451,6 @@ if __name__ == "__main__":
     TILE_CACHE = TileCache(16, 24)
     pygame.init()
 
-    pygame.display.set_mode((1200, 500))
+    pygame.display.set_mode((1200, 400))
     Game().main()
+
