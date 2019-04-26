@@ -3,7 +3,7 @@ import configparser
 import pygame
 import pygame.locals as pg
 import random
-from timer2 import timer
+#from timer2 import timer
 
 # Motion offsets for particular directions
 #     N  E  S   W
