@@ -108,7 +108,7 @@ class Sprite(pygame.sprite.Sprite):
 class Key(Sprite):
 
     def __init__(self, pos=(3, 1)):
-        self.frames = SPRITE_CACHE["key.png"]
+        self.frames = SPRITE_CACHE["key2_small.png"]
         Sprite.__init__(self, pos)
         self.direction = 0
         self.animation = None
