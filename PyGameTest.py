@@ -3,6 +3,7 @@ import configparser
 import pygame
 import pygame.locals as pg
 import random
+from timer2 import timer
 
 # Motion offsets for particular directions
 #     N  E  S   W
@@ -319,6 +320,7 @@ class Game(object):
         self.sprites = SortedUpdates()
         self.overlays = pygame.sprite.RenderUpdates()
         self.use_level(Level())
+        self.gotKey = 0
 
     def use_level(self, level):
         """Set the level as the current one."""
@@ -403,6 +405,7 @@ class Game(object):
         for i in range(len(self.enemynum)):
             self.enemy[i].de = random.randint(0,3)
         clock = pygame.time.Clock()
+
         # Draw the whole screen initially
         self.screen.blit(self.background, (0, 0))
         self.overlays.draw(self.screen)
@@ -418,7 +421,8 @@ class Game(object):
                 self.player.update()
             for i in range(len(self.keynum)):
                 if self.player.pos == self.key[i].pos:
-                    print('Gotcha')
+                    self.gotKey += 1
+                    print(self.gotKey)
             for i in range(len(self.enemynum)):
                 if self.player.pos == self.enemy[i].pos:
                     print('Game Over')
@@ -426,6 +430,7 @@ class Game(object):
                 elif self.enemy[i].animation is None:
                     self.enemy[i].de = self.enemy_walk(self.enemy[i])
                     self.enemy[i].update()
+
             # Don't add shadows to dirty rectangles, as they already fit inside
             # sprite rectangles.
 
