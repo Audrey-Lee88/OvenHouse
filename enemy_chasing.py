@@ -152,10 +152,10 @@ while True:
                 player.control(steps,0)
                 enemy.move_towards_player(player)
             if event.key == pygame.K_UP or event.key == ord('w'):
-                player.control(0, steps)
+                player.control(0, -steps)
                 enemy.move_towards_player(player)
             if event.key == pygame.K_DOWN or event.key == ord('w'):
-                player.control(0, -steps)
+                player.control(0, steps)
                 enemy.move_towards_player(player)
 
         if event.type == pygame.KEYUP:
@@ -166,7 +166,7 @@ while True:
                 player.control(-steps,0)
                 enemy.move_towards_player(player)
             if event.key == pygame.K_UP or event.key == ord('w'):
-                player.control(0, -steps)
+                player.control(0, steps)
                 enemy.move_towards_player(player)
             if event.key == pygame.K_DOWN or event.key == ord('w'):
                 player.control(0, steps)
