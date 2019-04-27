@@ -3,7 +3,9 @@
 ## Game Architecture 
 
 <p align="center"><img src="flowchart.png"/></p>
-This is an UML diagram of the main classes involved in the game.
+<p align="center">
+  UML diagram of the main classes involved in the game
+</p>
 
 ### Controls
 
