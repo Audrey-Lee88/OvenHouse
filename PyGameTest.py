@@ -149,9 +149,9 @@ class Enemy(Sprite):
         for frame in range(0,3):
             self.image = self.frames[0][frame]
             yield None
-            self.move(2*DX[self.direction], DY[self.direction])
+            self.move(DX[self.direction], DY[self.direction])
             yield None
-            self.move(2*DX[self.direction], DY[self.direction])
+            self.move(DX[self.direction], DY[self.direction])
 
     def update(self, *args):
         """Run the current animation or just stand there if no animation set."""
@@ -320,7 +320,8 @@ class Game(object):
         self.sprites = SortedUpdates()
         self.overlays = pygame.sprite.RenderUpdates()
         self.use_level(Level())
-        self.gotKey = 0
+        for i in range(len(self.keynum)):
+            self.key[i].gotKey = False
 
     def use_level(self, level):
         """Set the level as the current one."""
@@ -401,6 +402,7 @@ class Game(object):
         self.pressed_key = None
 
     def main(self):
+        count = 0
         """Run the main loop."""
         for i in range(len(self.enemynum)):
             self.enemy[i].de = random.randint(0,3)
@@ -420,9 +422,9 @@ class Game(object):
                 self.control()
                 self.player.update()
             for i in range(len(self.keynum)):
-                if self.player.pos == self.key[i].pos:
-                    self.gotKey += 1
-                    print(self.gotKey)
+                if self.player.pos == self.key[i].pos and self.key[i].gotKey == False:
+                    self.key[i].gotKey = True
+                    count += 1
             for i in range(len(self.enemynum)):
                 if self.player.pos == self.enemy[i].pos:
                     print('Game Over')
@@ -458,4 +460,3 @@ if __name__ == "__main__":
 
     pygame.display.set_mode((1200, 400))
     Game().main()
-
