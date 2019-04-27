@@ -16,11 +16,14 @@ class Player(pygame.sprite.Sprite):
     '''
     Spawn a player
     '''
-    def __init__(self):
+    def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
+        self.x = x
+        self.y = y
         self.movex = 0 # move along X
         self.movey = 0 # move along Y
         self.frame = 0 # count frames
+        self.hitbox = (self.x + 20, self.y, 50, 70)
 
         self.images = []
         img = pygame.image.load(os.path.join('images','characters.png')).convert()
@@ -55,6 +58,7 @@ class Player(pygame.sprite.Sprite):
             if self.frame > 3 * ani:
                 self.frame = 0
                 self.image = self.images[self.frame//ani]
+        pygame.draw.rect(self.hitbox)
 
 class Enemy(pygame.sprite.Sprite):
     '''
@@ -67,14 +71,15 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
 
+    # move so that even if the player is still the enemy comes
     def move_towards_player(self, player):
         # find normalized direction vector (dx, dy) between enemy and player
         dx, dy = self.rect.x - player.rect.x, self.rect.y - player.rect.y
         dist = math.hypot(dx, dy)
         dx, dy = dx / dist, dy / dist
         # move along this normalized vector towards the player at current speed
-        self.rect.x -= dx * 20
-        self.rect.y -= dy * 20
+        self.rect.x -= dx * 4
+        self.rect.y -= dy * 4
 
 class Key(pygame.sprite.Sprite):
     def __init__(self, x, y, img):
@@ -112,9 +117,9 @@ world = pygame.display.set_mode([worldx,worldy])
 backdrop = pygame.image.load(os.path.join('images','stage.png')).convert()
 backdropbox = world.get_rect()
 
-player = Player()   # spawn player
-player.rect.x = 300   # go to x
-player.rect.y = 200   # go to y
+player = Player(300,200)   # spawn player
+# player.rect.x = 300   # go to x
+# player.rect.y = 200   # go to y
 player_list = pygame.sprite.Group()
 player_list.add(player)
 steps = 5
@@ -139,6 +144,8 @@ enemy_list.add(enemy)                # add enemy to group
 Main Loop
 '''
 while True:
+    enemy.move_towards_player(player)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -147,38 +154,32 @@ while True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
                 player.control(-steps,0)
-                enemy.move_towards_player(player)
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
                 player.control(steps,0)
-                enemy.move_towards_player(player)
             if event.key == pygame.K_UP or event.key == ord('w'):
                 player.control(0, -steps)
-                enemy.move_towards_player(player)
             if event.key == pygame.K_DOWN or event.key == ord('w'):
                 player.control(0, steps)
-                enemy.move_towards_player(player)
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
                 player.control(steps,0)
-                enemy.move_towards_player(player)
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
                 player.control(-steps,0)
-                enemy.move_towards_player(player)
             if event.key == pygame.K_UP or event.key == ord('w'):
                 player.control(0, steps)
-                enemy.move_towards_player(player)
             if event.key == pygame.K_DOWN or event.key == ord('w'):
-                player.control(0, steps)
-                enemy.move_towards_player(player)
+                player.control(0, -steps)
 
 
 
     world.blit(backdrop, backdropbox)
+
     key_list.draw(world)
     player.update()  # update player position
     player_list.draw(world) # draw player
     enemy_list.draw(world)
+
     pygame.display.flip()
     clock.tick(fps)
     pygame.display.update()
