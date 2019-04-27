@@ -1,5 +1,6 @@
 import pygame
 import time
+import sys
 from pygame import font
 
 pygame.init()
@@ -31,6 +32,20 @@ def text_ani(str, tuple):
         count += 1
         letter += 1
 
+def blink_text(str, tuple, rgb):
+    pygame.event.clear() ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
+    time.sleep(0.20)
+
+    x, y = tuple
+    y = y * line_space
+
+    text = basicfont.render(str, False, rgb, (0, 0, 0))
+    textrect = text.get_rect(topleft=(x, y))
+    textrect.center = (800/2), (textrect[1] + 800/3)
+
+    screen.blit(text, textrect)
+    pygame.display.update(textrect)
+
 
 text_ani('You thought that the witch was the evil character', (0, 1))
 text_ani('who chased you so that she could gobble you up...', (0, 2))
@@ -41,6 +56,9 @@ text_ani('You now are an outlaw! Ayy', (0, 6))
 text_ani('PRESS SPACEBAR TO PROCEED', (0, 8))
 
 while True:
+    blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (254,254,254))
+    blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (163,24,24))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
