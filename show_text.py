@@ -33,7 +33,7 @@ def text_ani(str, tuple):
         letter += 1
 
 def blink_text(str, tuple, rgb):
-    pygame.event.clear() ## this is very important if your event queue is not handled properly elsewhere. Alternativly pygame.event.pump() would work.
+    pygame.event.clear()
     time.sleep(0.20)
 
     x, y = tuple
@@ -45,6 +45,7 @@ def blink_text(str, tuple, rgb):
 
     screen.blit(text, textrect)
     pygame.display.update(textrect)
+
 
 
 text_ani('You thought that the witch was the evil character', (0, 1))
