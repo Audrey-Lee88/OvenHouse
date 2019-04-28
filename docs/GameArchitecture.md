@@ -8,6 +8,7 @@
 </p>
 
 ### Controls
+The controls are located in the main script which allows the player to move using the arrow keys and interact with enemies and items. If the player runs into an enemy, the game ends, and it's Game Over.
 
 ### Integrating Art
 
