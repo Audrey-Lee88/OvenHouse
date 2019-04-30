@@ -107,8 +107,11 @@ class Sprite(pygame.sprite.Sprite):
 
 class Key(Sprite):
 
-    def __init__(self, pos=(3, 1)):
-        self.frames = SPRITE_CACHE["key2_small.png"]
+    def __init__(self, pos=(3, 1),key_pic = 1):
+        if key_pic == 1:
+            self.frames = SPRITE_CACHE["key1_small.png"]
+        if key_pic == 2:
+            self.frames = SPRITE_CACHE["key2_small.png"]
         Sprite.__init__(self, pos)
         self.direction = 0
         self.animation = None
@@ -208,6 +211,7 @@ class Level(object):
         self.key = {}
         self.width = 0
         self.height = 0
+        self.whichlevel = 'level1'
         self.load_file(filename)
 
     def load_file(self, filename="level.map"):
@@ -215,8 +219,8 @@ class Level(object):
 
         parser = configparser.ConfigParser()
         parser.read(filename)
-        self.tileset = parser.get("level1", "tileset")
-        self.map = parser.get("level1", "map").split("\n")
+        self.tileset = parser.get(self.whichlevel, "tileset")
+        self.map = parser.get(self.whichlevel, "map").split("\n")
         for section in parser.sections():
             if len(section) == 1:
                 desc = dict(parser.items(section))
@@ -341,7 +345,13 @@ class Game(object):
                 self.enemynum += [sprite]
                 self.enemy = self.enemynum
             elif tile.get("key") in ('true', '1', 'yes', 'on'):
-                sprite = Key(pos)
+                key_pic = 1
+                sprite = Key(pos, key_pic)
+                self.keynum += [sprite]
+                self.key = self.keynum
+            elif tile.get("key") in ('true', '2', 'yes', 'on'):
+                key_pic = 2
+                sprite = Key(pos, key_pic)
                 self.keynum += [sprite]
                 self.key = self.keynum
             else:
@@ -436,7 +446,8 @@ class Game(object):
                     self.enemy[i].update()
             if count == 2:
                 print("next level")
-                exit()
+                Level.whichlevel = 'level2'
+                count = 0
 
             # Don't add shadows to dirty rectangles, as they already fit inside
             # sprite rectangles.
@@ -463,5 +474,5 @@ if __name__ == "__main__":
     TILE_CACHE = TileCache(16, 24)
     pygame.init()
 
-    pygame.display.set_mode((1200, 400))
+    pygame.display.set_mode((1200, 600))
     Game().main()
