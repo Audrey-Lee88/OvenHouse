@@ -1,3 +1,7 @@
+"""
+DO NOT RUN! It doesn't work; I have to fix errors.
+"""
+
 import configparser
 
 import pygame
@@ -447,6 +451,7 @@ class Game(object):
             if count == 2:
                 print("next level")
                 Level.whichlevel = 'level2'
+                self.use_level(Level())
                 count = 0
 
             # Don't add shadows to dirty rectangles, as they already fit inside
