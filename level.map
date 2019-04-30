@@ -87,7 +87,7 @@ sprite = house.png
 block = true
 
 [>]
-name = stairs
+name = blood
 block = true
 tile = 3, 3
 

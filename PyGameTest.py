@@ -425,6 +425,8 @@ class Game(object):
                 if self.player.pos == self.key[i].pos and self.key[i].gotKey == False:
                     self.key[i].gotKey = True
                     count += 1
+                if self.key[i].gotKey == True:
+                    self.key[i].image = self.key[i].frames[1][0]
             for i in range(len(self.enemynum)):
                 if self.player.pos == self.enemy[i].pos:
                     print('Game Over')
@@ -432,6 +434,9 @@ class Game(object):
                 elif self.enemy[i].animation is None:
                     self.enemy[i].de = self.enemy_walk(self.enemy[i])
                     self.enemy[i].update()
+            if count == 2:
+                print("next level")
+                exit()
 
             # Don't add shadows to dirty rectangles, as they already fit inside
             # sprite rectangles.
