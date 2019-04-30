@@ -9,9 +9,11 @@
 ![Hansel & Gretel](https://thestoryshack.com/wp-content/uploads/2017/06/hansel-and-gretel-940x540.jpg)
 ## Project Description 
 
-Welcome to the OvenHouse repository. This is a game that creates a suspensful experience for the player. It is based off of the Grimm Fairy Tale *Hansel and Gretel*.
+This is a game that creates a suspensful experience for the player. It is based off of the Grimm Fairy Tale *Hansel and Gretel*.
 
 The goal of this game is to reintroduce fairy tales and folk traditions to the next generation in a modern style; to keep us connected with our past while modifying it so that it fits the current trend.
+
+TODO: one sentence about the design decisions/artwork that we made
 
 ## Prerequisites
 
