@@ -6,7 +6,7 @@ map =   XXX.XXXXXXXXXXXs..s..........................s
         X...........X.X.s.............s...........s...
         X.s...s....X.XX....................s...s......
         X...............s........sXXXXX...............
-        XX.X.X.X...X.XXs...........................sc.
+        XX.X.X.X...X.XXs...........................sk.
         X.......s...X.X..s.........s..........s.......
         XX.XsX.X......X..............s....s...........
         ..........s...X.ss.....X.s.s.......XXXXX......
@@ -70,8 +70,15 @@ sprite = skeleton.png
 [c]
 name = key
 tile = 1,3
+sprite = key1_small.png
+key = true
+
+[k]
+name = key
+tile = 1,3
 sprite = key2_small.png
 key = true
+
 
 [h]
 name = house
