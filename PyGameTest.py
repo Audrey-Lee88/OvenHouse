@@ -9,6 +9,7 @@ import pygame.locals as pg
 import random
 import math
 #from timer2 import timer
+import show_text as st
 
 # Motion offsets for particular directions
 #     N  E  S   W
@@ -497,6 +498,7 @@ class Game(object):
             for i in range(len(self.enemynum)):
                 if self.player.pos == self.enemy[i].pos:
                     print('Game Over')
+                    st.main()
                     exit()
                 elif self.enemy[i].animation is None:
                     self.enemy[i].de = self.enemy_walk(self.enemy[i])
