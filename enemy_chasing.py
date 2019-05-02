@@ -52,7 +52,7 @@ class Player(pygame.sprite.Sprite):
                 self.frame = 0
                 self.image = self.images[self.frame//ani]
 
-class Enemy(pygame.sprite.Sprite):
+class Witch(pygame.sprite.Sprite):
     '''
     Spawn an enemy
     '''
@@ -125,7 +125,7 @@ if key1.rect.x == key2.rect.x and key1.rect.y == key2.rect.y:
     key2.random_location()
 key_list.add(key2)
 
-enemy = Enemy(500,200,'slime.png')
+enemy = Witch(500,200,'slime.png')
 enemy_list = pygame.sprite.Group()   # create enemy group
 enemy_list.add(enemy)                # add enemy to group
 # put run-once code here
