@@ -53,12 +53,12 @@ text_ani('who chased you so that she could gobble you up...', (0, 2))
 text_ani("but she WASN'T!", (0, 3))
 text_ani('You have destroyed her lovely house and invaded it,', (0, 4))
 text_ani('and the witch was simply trying to kick you out…', (0, 5))
-text_ani('You now are an outlaw! Ayy', (0, 6))
+text_ani('You now are an outlaw! Yay!', (0, 6))
 text_ani('PRESS SPACEBAR TO PROCEED', (0, 8))
 
 while True:
     blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (254,254,254))
-    blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (163,24,24))
+    blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (0,0,0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
