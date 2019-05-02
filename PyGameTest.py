@@ -1,5 +1,5 @@
 """
-DO NOT RUN! It doesn't work; I have to fix errors.
+
 """
 
 import configparser
@@ -208,14 +208,15 @@ class Player(Sprite):
 class Level(object):
     """Load and store the map of the level, together with all the items."""
 
-    def __init__(self, filename="level.map"):
+    def __init__(self, which_level,filename="level.map"):
         self.tileset = ''
         self.map = []
         self.items = {}
         self.key = {}
         self.width = 0
         self.height = 0
-        self.whichlevel = 'level1'
+        self.whichlevel = which_level
+        print(self.whichlevel)
         self.load_file(filename)
 
     def load_file(self, filename="level.map"):
@@ -327,7 +328,7 @@ class Game(object):
         self.game_over = False
         self.sprites = SortedUpdates()
         self.overlays = pygame.sprite.RenderUpdates()
-        self.use_level(Level())
+        self.use_level(Level('level1'))
         for i in range(len(self.keynum)):
             self.key[i].gotKey = False
 
@@ -450,8 +451,7 @@ class Game(object):
                     self.enemy[i].update()
             if count == 2:
                 print("next level")
-                Level.whichlevel = 'level2'
-                self.use_level(Level())
+                exit()
                 count = 0
 
             # Don't add shadows to dirty rectangles, as they already fit inside
