@@ -1,8 +1,4 @@
-import pygame
-import sys
-import os
-import math
-import random
+import pygame, sys, os, math, random
 
 pygame.init()
 pygame.display.init()
@@ -16,14 +12,11 @@ class Player(pygame.sprite.Sprite):
     '''
     Spawn a player
     '''
-    def __init__(self, x, y):
+    def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.x = x
-        self.y = y
         self.movex = 0 # move along X
         self.movey = 0 # move along Y
         self.frame = 0 # count frames
-        self.hitbox = (self.x + 20, self.y, 50, 70)
 
         self.images = []
         img = pygame.image.load(os.path.join('images','characters.png')).convert()
@@ -58,7 +51,6 @@ class Player(pygame.sprite.Sprite):
             if self.frame > 3 * ani:
                 self.frame = 0
                 self.image = self.images[self.frame//ani]
-        pygame.draw.rect(self.hitbox)
 
 class Enemy(pygame.sprite.Sprite):
     '''
@@ -71,7 +63,6 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
 
-    # move so that even if the player is still the enemy comes
     def move_towards_player(self, player):
         # find normalized direction vector (dx, dy) between enemy and player
         dx, dy = self.rect.x - player.rect.x, self.rect.y - player.rect.y
@@ -89,7 +80,7 @@ class Key(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
 
-    ### now have to make two keys not overlap
+
     def random_location(self):
         location_set = [(100,100), (700,600), (200,700), (300, 400), (700, 100)]
         random_locations = random.sample(location_set, 1)
@@ -97,7 +88,6 @@ class Key(pygame.sprite.Sprite):
         self.rect.x = first_location[0]
         self.rect.y = first_location[1]
 
-    # def generate_keys(self):
 
 
 '''
@@ -117,9 +107,9 @@ world = pygame.display.set_mode([worldx,worldy])
 backdrop = pygame.image.load(os.path.join('images','stage.png')).convert()
 backdropbox = world.get_rect()
 
-player = Player(300,200)   # spawn player
-# player.rect.x = 300   # go to x
-# player.rect.y = 200   # go to y
+player = Player()   # spawn player
+player.rect.x = 300   # go to x
+player.rect.y = 200   # go to y
 player_list = pygame.sprite.Group()
 player_list.add(player)
 steps = 5
@@ -144,9 +134,21 @@ enemy_list.add(enemy)                # add enemy to group
 Main Loop
 '''
 while True:
+    world.blit(backdrop, backdropbox)
+
+    key_list.draw(world)
+    player.update()  # update player position
+    player_list.draw(world) # draw player
+    enemy_list.draw(world)
+
     enemy.move_towards_player(player)
 
     for event in pygame.event.get():
+        if enemy.rect.colliderect(player.rect):
+            print("Collide!")
+            pygame.quit()
+            sys.exit()
+
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
@@ -171,14 +173,6 @@ while True:
             if event.key == pygame.K_DOWN or event.key == ord('w'):
                 player.control(0, -steps)
 
-
-
-    world.blit(backdrop, backdropbox)
-
-    key_list.draw(world)
-    player.update()  # update player position
-    player_list.draw(world) # draw player
-    enemy_list.draw(world)
 
     pygame.display.flip()
     clock.tick(fps)
