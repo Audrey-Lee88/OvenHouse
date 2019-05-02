@@ -1,8 +1,4 @@
-import pygame
-import sys
-import os
-import math
-import random
+import pygame, sys, os, math, random
 
 pygame.init()
 pygame.display.init()
@@ -138,9 +134,21 @@ enemy_list.add(enemy)                # add enemy to group
 Main Loop
 '''
 while True:
+    world.blit(backdrop, backdropbox)
+
+    key_list.draw(world)
+    player.update()  # update player position
+    player_list.draw(world) # draw player
+    enemy_list.draw(world)
+
     enemy.move_towards_player(player)
-    
+
     for event in pygame.event.get():
+        if enemy.rect.colliderect(player.rect):
+            print("Collide!")
+            pygame.quit()
+            sys.exit()
+
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
@@ -166,12 +174,6 @@ while True:
                 player.control(0, -steps)
 
 
-
-    world.blit(backdrop, backdropbox)
-    key_list.draw(world)
-    player.update()  # update player position
-    player_list.draw(world) # draw player
-    enemy_list.draw(world)
     pygame.display.flip()
     clock.tick(fps)
     pygame.display.update()
