@@ -451,7 +451,6 @@ class Game(object):
                     self.enemy[i].update()
             if count == 2:
                 print("next level")
-                exit()
                 count = 0
 
             # Don't add shadows to dirty rectangles, as they already fit inside
