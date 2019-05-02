@@ -7,6 +7,7 @@ import configparser
 import pygame
 import pygame.locals as pg
 import random
+import math
 #from timer2 import timer
 
 # Motion offsets for particular directions
@@ -121,14 +122,6 @@ class Key(Sprite):
         self.animation = None
         self.image = self.frames[self.direction][0]
 
-    def walk_animation(self):
-        """Animation for the enemy walking."""
-
-        # This animation is hardcoded for 4 frames and 16x24 map tiles
-        for frame in range(0,1):
-            self.image = self.frames[0][frame]
-            yield None
-
     def update(self, *args):
         """Run the current animation or just stand there if no animation set."""
 
@@ -170,6 +163,35 @@ class Enemy(Sprite):
                 next(self.animation)
             except StopIteration:
                 self.animation = None
+
+class Witch(Sprite):
+
+    def __init__(self, pos=(4, 1)):
+        self.frames = SPRITE_CACHE["witch.png"]
+        Sprite.__init__(self, pos)
+        self.direction = 2
+        self.animation = None
+        self.image = self.frames[self.direction][0]
+
+    def update(self, *args):
+        """Run the current animation or just stand there if no animation set."""
+
+        if self.animation is None:
+            self.image = self.frames[self.direction][0]
+        else:
+            try:
+                next(self.animation)
+            except StopIteration:
+                self.animation = None
+
+    def move_towards_player(self):
+        for frame in range(4):
+            self.image = self.frames[self.direction][frame]
+            yield None
+            self.move(2*DX[self.direction], 2*DY[self.direction])
+            yield None
+            self.move(2*DX[self.direction], 2*DY[self.direction])
+
 
 class Player(Sprite):
     """ Display and animate the player character."""
@@ -359,6 +381,9 @@ class Game(object):
                 sprite = Key(pos, key_pic)
                 self.keynum += [sprite]
                 self.key = self.keynum
+            elif tile.get("witch") in ('true', '1', 'yes', 'on'):
+                sprite = Witch(pos)
+                self.witch = sprite
             else:
                 sprite = Sprite(pos, SPRITE_CACHE[tile["sprite"]])
             self.sprites.add(sprite)
@@ -371,6 +396,25 @@ class Game(object):
             overlay.image = image
             overlay.rect = image.get_rect().move(x*24, y*16-16)
 
+    def witch_move(self):
+        x, y = self.witch.pos
+        px, py = self.player.pos
+        if x < px:
+            self.witch.direction = 1
+            if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
+                self.witch.animation = self.witch.move_towards_player()
+        if x > px:
+            self.witch.direction = 3
+            if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
+                self.witch.animation = self.witch.move_towards_player()
+        if y < py:
+            self.witch.direction = 2
+            if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
+                self.witch.animation = self.witch.move_towards_player()
+        if y > py:
+            self.witch.direction = 0
+            if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
+                self.witch.animation = self.witch.move_towards_player()
 
     def enemy_walk(self,enemy):
         x,y = enemy.pos
@@ -433,9 +477,17 @@ class Game(object):
             self.sprites.clear(self.screen, self.background)
             self.sprites.update()
             # If the player's animation is finished, check for keypresses
+
+
             if self.player.animation is None:
                 self.control()
                 self.player.update()
+            if self.witch.animation is None:
+                self.witch_move()
+                self.witch.update()
+            if self.player.pos == self.witch.pos:
+                print("Game over!")
+                exit()
             for i in range(len(self.keynum)):
                 if self.player.pos == self.key[i].pos and self.key[i].gotKey == False:
                     self.key[i].gotKey = True
@@ -464,7 +516,6 @@ class Game(object):
             pygame.display.update(dirty)
             # Wait for one tick of the game clock
             clock.tick(15)
-
             # Process pygame events
             for event in pygame.event.get():
                 if event.type == pg.QUIT:
