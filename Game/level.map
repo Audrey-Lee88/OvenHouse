@@ -103,6 +103,12 @@ tile = 0, 0
 sprite = cabinet.png
 block = true
 
+[f]
+name = carpet
+tile = 0, 0
+sprite = carpet.png
+block = false
+
 [d]
 name = Dining
 tile = 0, 0
