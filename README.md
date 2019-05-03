@@ -24,7 +24,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install package
 ```bash
 python -m pip install -U pygame --user
 ```
-After these libraries have been downloaded, also download the artwork to a file accessible by our master code
+After these libraries have been downloaded, also **download** the **artwork** and the **font file** to a file accessible by our master code
 
 ## Usage
 ### Run Program 
@@ -39,6 +39,9 @@ Anyone is welcome to use this code. We have opted into the Open Source Initiativ
 
 #### Acknowledgments
 
+
+#### How to Build on the Game
+TODO: add explanation here
 
 #### Authors
 [**Audrey Lee**](https://github.com/Audrey-Lee88)
