@@ -1,4 +1,4 @@
-| [Home](index.md) 	| [Project Evolution](ProjectEvolution.md)  | [Game Architecture](GameArchitecture.md) 	| [Results](Results.md)  | [About Us!](AboutUs.md)
+| [Home](index.md) 	| [Project Evolution](ProjectEvolution.md)  | [Game Architecture](GameArchitecture.md) 	| [About Us!](AboutUs.md)
 
 ## Artwork Evolution
 Our project went through a few design iterations that varied due to the program, and also due to peer review.
@@ -11,12 +11,8 @@ The rooms themselves also had a major redesign in order to fit with the room-mak
 
 
 ### Gretel
-<p align="center"><img src="evolution/gretel1.png" width = "400"/></p>
-<p align="center">Gretel 1</p>
-<p align="center"><img src="evolution/gretel2.png" width = "150"/></p>
-<p align="center">Gretel 2</p>
-<p align="center"><img src="evolution/gretel3.png" width = "150"/></p>
-<p align="center">Gretel 3</p>
+<p align="center"><img src="gretel_dev.jpg" width = "600"/></p>
+<p align="center">Gretel Development</p>
 
 ### Key
 <p align="center"><img src="evolution/key1.png" width = "300"/></p>
