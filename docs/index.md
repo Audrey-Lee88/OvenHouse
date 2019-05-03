@@ -9,26 +9,12 @@
 ![Hansel & Gretel](https://thestoryshack.com/wp-content/uploads/2017/06/hansel-and-gretel-940x540.jpg)
 ## Project Description 
 
-This is a game that creates a suspensful experience for the player. It is based off of the Grimm Fairy Tale *Hansel and Gretel*.
+This is a game that creates a suspenseful experience for the player. It is based off of the Grimm Fairy Tale *Hansel and Gretel*.
 
 The goal of this game is to reintroduce fairy tales and folk traditions to the next generation in a modern style; to keep us connected with our past while modifying it so that it fits the current trend.
 
-TODO: one sentence about the design decisions/artwork that we made
-
-## Prerequisites
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install packages
-
-```bash
-python -m pip install -U pygame --user
-```
-After these libraries have been downloaded, also download the artwork to a file accessible by our master code
-
-## Usage
-### Run Program 
-```bash
-python OvenHouse.py 
-```
+[//]: # (TODO: one sentence about the design decisions/artwork that we made)
+The artwork in this game heavily uses the colors black and white to achieve two goals: creating a chilling atmophsere and avoiding insinuations about race and skin color. The vivid colors apart from black and white are meant to project a magical feeling as the player is captured by the witch and the only light they can see is what is given to them by the witch.
 
 ## Using this repo/project
 
