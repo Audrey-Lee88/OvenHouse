@@ -1,23 +1,21 @@
-# OvenHouse!
+| [Home](index.md) 	| [Project Evolution](ProjectEvolution.md)  | [Game Architecture](GameArchitecture.md) 	| [Results](Results.md)  | [About Us!](AboutUs.md)
 
+
+&nbsp;
+&nbsp;
+
+# Welcome to OvenHouse!
+
+![Hansel & Gretel](https://thestoryshack.com/wp-content/uploads/2017/06/hansel-and-gretel-940x540.jpg)
 ## Project Description 
 
-Welcome to the OvenHouse repository. This is a game that creates a suspensful experience for the player. It is based off of the Grimm Fairy Tale *Hansel and Gretel*.
+This is a game that creates a suspensful experience for the player. It is based off of the Grimm Fairy Tale *Hansel and Gretel*.
 
 The goal of this game is to reintroduce fairy tales and folk traditions to the next generation in a modern style; to keep us connected with our past while modifying it so that it fits the current trend.
 
-## Getting Started
+TODO: one sentence about the design decisions/artwork that we made
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
-
-Clone this repo to your local machine: `git clone https://github.com/hkRho/OvenHouse.git`
-
-### Prerequisites
-Please upgrade your Linux dependecies:
-```
-sudo apt-get update
-sudo apt-get upgrade
-```
+## Prerequisites
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install packages
 
@@ -32,15 +30,13 @@ After these libraries have been downloaded, also download the artwork to a file 
 python OvenHouse.py 
 ```
 
-#### License
+## Using this repo/project
 
 Anyone is welcome to use this code. We have opted into the Open Source Initiative's goal of an open & free internet. 
 "The license shall not restrict any party from selling or giving away the software as a component of an aggregate software distribution containing programs from several different sources. The license shall not require a royalty or other fee for such sale."
 
-#### Acknowledgments
 
-
-#### Authors
+## Authors
 [**Audrey Lee**](https://github.com/Audrey-Lee88)
 
 [**HK Rho**](https://github.com/hkRho)
