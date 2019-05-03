@@ -189,9 +189,9 @@ class Witch(Sprite):
         for frame in range(4):
             self.image = self.frames[self.direction][frame]
             yield None
-            self.move(2*DX[self.direction], 2*DY[self.direction])
+            self.move(2*DX[self.direction], DY[self.direction])
             yield None
-            self.move(2*DX[self.direction], 2*DY[self.direction])
+            self.move(2*DX[self.direction], DY[self.direction])
 
 
 class Player(Sprite):
