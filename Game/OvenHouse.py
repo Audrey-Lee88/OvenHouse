@@ -218,9 +218,13 @@ class Player(Sprite):
     """ Display and animate the player character."""
 
     is_player = True
+    which_player = 1
 
     def __init__(self, pos=(1, 1)):
-        self.frames = SPRITE_CACHE["player.png"]
+        if self.which_player == 1:
+            self.frames = SPRITE_CACHE["player.png"]
+        if self.which_player == 2:
+            self.frames = SPRITE_CACHE["player2.png"]
         Sprite.__init__(self, pos)
         self.direction = 2
         self.animation = None
@@ -410,7 +414,6 @@ class Game(object):
             elif tile.get("exit") in ('true', '2', 'yes', 'on'):
                 sprite = Exit(pos)
                 self.exit = sprite
-                print(self.exit )
             else:
                 sprite = Sprite(pos, SPRITE_CACHE[tile["sprite"]])
             self.sprites.add(sprite)

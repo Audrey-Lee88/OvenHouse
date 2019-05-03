@@ -103,12 +103,6 @@ tile = 2,3
 player = true
 sprite = player.png
 
-[*]
-name = player2
-tile = 2,3
-player = true
-sprite = player2.png
-
 [s]
 name = fire
 tile = 2, 3
