@@ -346,12 +346,13 @@ class Game(object):
     """The main game object."""
 
     def __init__(self):
+        self.current = 'level1'
         self.screen = pygame.display.get_surface()
         self.pressed_key = None
         self.game_over = False
         self.sprites = SortedUpdates()
         self.overlays = pygame.sprite.RenderUpdates()
-        self.use_level(Level('level1'))
+        self.use_level(Level(self.current))
         for i in range(len(self.keynum)):
             self.key[i].gotKey = False
 
@@ -397,25 +398,25 @@ class Game(object):
             overlay.image = image
             overlay.rect = image.get_rect().move(x*24, y*16-16)
 
+    def witch_blocking(self,x,y):
+        if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
+            self.witch.animation = self.witch.move_towards_player()
+
     def witch_move(self):
         x, y = self.witch.pos
         px, py = self.player.pos
         if x < px:
             self.witch.direction = 1
-            if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
-                self.witch.animation = self.witch.move_towards_player()
+            self.witch_blocking(x,y)
         if x > px:
             self.witch.direction = 3
-            if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
-                self.witch.animation = self.witch.move_towards_player()
+            self.witch_blocking(x,y)
         if y < py:
             self.witch.direction = 2
-            if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
-                self.witch.animation = self.witch.move_towards_player()
+            self.witch_blocking(x,y)
         if y > py:
             self.witch.direction = 0
-            if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
-                self.witch.animation = self.witch.move_towards_player()
+            self.witch_blocking(x,y)
 
     def enemy_walk(self,enemy):
         x,y = enemy.pos
@@ -460,6 +461,20 @@ class Game(object):
         elif pressed(pg.K_RIGHT):
             walk(1)
         self.pressed_key = None
+
+    def next_level(self):
+        if self.current == 'level1':
+            self.current = 'level2'
+        elif self.current == 'level2':
+            self.current = 'level3'
+        self.use_level(Level(self.current))
+        for i in range(len(self.keynum)):
+            self.key[i].gotKey = False
+        for i in range(len(self.enemynum)):
+            self.enemy[i].de = random.randint(0,3)
+        self.screen.blit(self.background, (0, 0))
+        self.overlays.draw(self.screen)
+        pygame.display.flip()
 
     def main(self):
         count = 0
@@ -506,6 +521,7 @@ class Game(object):
                     self.enemy[i].update()
             if count == 2:
                 print("next level")
+                self.next_level()
                 count = 0
 
             # Don't add shadows to dirty rectangles, as they already fit inside
