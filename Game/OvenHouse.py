@@ -111,6 +111,26 @@ class Sprite(pygame.sprite.Sprite):
 
         next(self.animation)
 
+class Exit(Sprite):
+
+    def __init__(self, pos=(5, 1)):
+        self.frames = SPRITE_CACHE["door.png"]
+        Sprite.__init__(self, pos)
+        self.direction = 0
+        self.animation = None
+        self.image = self.frames[self.direction][0]
+
+    def update(self, *args):
+        """Run the current animation or just stand there if no animation set."""
+
+        if self.animation is None:
+            self.image = self.frames[0][0]
+        else:
+            try:
+                next(self.animation)
+            except StopIteration:
+                self.animation = None
+
 class Key(Sprite):
 
     def __init__(self, pos=(3, 1),key_pic = 1):
@@ -347,6 +367,7 @@ class Game(object):
 
     def __init__(self):
         self.current = 'level1'
+        self.last = 'level3'
         self.screen = pygame.display.get_surface()
         self.pressed_key = None
         self.game_over = False
@@ -386,6 +407,10 @@ class Game(object):
             elif tile.get("witch") in ('true', '1', 'yes', 'on'):
                 sprite = Witch(pos)
                 self.witch = sprite
+            elif tile.get("exit") in ('true', '2', 'yes', 'on'):
+                sprite = Exit(pos)
+                self.exit = sprite
+                print(self.exit )
             else:
                 sprite = Sprite(pos, SPRITE_CACHE[tile["sprite"]])
             self.sprites.add(sprite)
@@ -520,12 +545,12 @@ class Game(object):
                     self.enemy[i].de = self.enemy_walk(self.enemy[i])
                     self.enemy[i].update()
             if count == 2:
-                print("next level")
-                self.next_level()
-                count = 0
-
-            # Don't add shadows to dirty rectangles, as they already fit inside
-            # sprite rectangles.
+                if self.player.pos == self.exit.pos:
+                    if self.current == self.last:
+                        print('done')
+                        exit()
+                    self.next_level()
+                    count = 0
 
             dirty = self.sprites.draw(self.screen)
             # Don't add ovelays to dirty rectangles, only the places where
