@@ -19,7 +19,7 @@ def text_ani(str, tuple,line_space,basicfont,screen):
         char = char + str[letter]
         text = basicfont.render(char, False, (254, 254, 254), (0, 0, 0)) #First tuple is text color, second tuple is background color
         textrect = text.get_rect(topleft=(x, y)) ## x, y's provided in function call. y coordinate amended by line height where needed
-        textrect.center = (800/2), (textrect[1] + 800/3)
+        textrect.center = (800/2), (textrect[1] + 600/3)
 
         screen.blit(text, textrect)
         pygame.display.update(textrect) ## update only the text just added without removing previous lines.
@@ -35,7 +35,7 @@ def blink_text(str, tuple, rgb,line_space,screen,basicfont):
 
     text = basicfont.render(str, False, rgb, (0, 0, 0))
     textrect = text.get_rect(topleft=(x, y))
-    textrect.center = (800/2), (textrect[1] + 800/3)
+    textrect.center = (800/2), (textrect[1] + 600/3)
 
     screen.blit(text, textrect)
     pygame.display.update(textrect)
@@ -43,7 +43,7 @@ def blink_text(str, tuple, rgb,line_space,screen,basicfont):
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode([800,800])
+    screen = pygame.display.set_mode([800,600])
     line_space = 32
 
     basicfont = pygame.font.Font('8bitoperator.ttf', 16)

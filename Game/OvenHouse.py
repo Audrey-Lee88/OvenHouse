@@ -10,6 +10,7 @@ import random
 import math
 #from timer2 import timer
 import show_text as st
+import choose_char as cc
 
 # Motion offsets for particular directions
 #     N  E  S   W
@@ -218,7 +219,7 @@ class Player(Sprite):
     """ Display and animate the player character."""
 
     is_player = True
-    which_player = 1
+    which_player = cc.main()
 
     def __init__(self, pos=(1, 1)):
         if self.which_player == 1:
