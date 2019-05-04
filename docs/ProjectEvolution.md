@@ -21,6 +21,10 @@ The rooms themselves also had a major redesign in order to fit with the room-mak
 <p align="center"><img src="evolution/witch_dev.png" height = "300"/></p>
 <p align="center">Witch Development</p>
 
+### Sprites
+<p align="center"><img src="evolution/sprites.png" height = "300"/></p>
+<p align="center">Sprite Movements</p>
+
 ### Key
 <p align="center"><img src="evolution/key_dev.png" height = "300"/></p>
 <p align="center">Key Development</p>
@@ -32,9 +36,5 @@ The rooms themselves also had a major redesign in order to fit with the room-mak
 <p align="center">Layout 2</p>
 
 ### Others after redesign
-<p align="center"><img src="evolution/door.png" width = "300"/></p>
-<p align="center">Door</p>
-<p align="center"><img src="evolution/fire.png" width = "300"/></p>
-<p align="center">Fire</p>
-<p align="center"><img src="evolution/wall1.png" width = "300"/></p>
-<p align="center">Wall</p>
+<p align="center"><img src="evolution/furniture.png" width = "300"/></p>
+<p align="center">Sample Furnitures</p>
