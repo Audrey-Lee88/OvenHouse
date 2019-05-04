@@ -3,11 +3,11 @@
 """
 
 import configparser
-
 import pygame
 import pygame.locals as pg
 import random
 import math
+
 #from timer2 import timer
 import show_text as st
 import choose_char as cc
@@ -122,7 +122,7 @@ class Exit(Sprite):
         self.image = self.frames[self.direction][0]
 
     def update(self, *args):
-        """Run the current animation or just stand there if no animation set."""
+        """Updates "animation" of door"""
 
         if self.animation is None:
             self.image = self.frames[0][0]
@@ -145,7 +145,7 @@ class Key(Sprite):
         self.image = self.frames[self.direction][0]
 
     def update(self, *args):
-        """Run the current animation or just stand there if no animation set."""
+        """Updates "animation" of key"""
 
         if self.animation is None:
             self.image = self.frames[0][0]
