@@ -11,14 +11,19 @@ The rooms themselves also had a major redesign in order to fit with the room-mak
 
 
 ### Gretel
-<p align="center"><img src="gretel_dev.jpg" width = "600"/></p>
+<p align="center"><img src="gretel_dev.jpg" height = "300"/></p>
 <p align="center">Gretel Development</p>
 
+### Hansel
+<p align="center"><img src="evolution/hansel.png" height = "300"/></p>
+
+### Witch
+<p align="center"><img src="evolution/witch_dev.png" height = "300"/></p>
+<p align="center">Witch Development</p>
+
 ### Key
-<p align="center"><img src="evolution/key1.png" width = "300"/></p>
-<p align="center">Key 1</p>
-<p align="center"><img src="evolution/key2.png" width = "150"/></p>
-<p align="center">Key 2</p>
+<p align="center"><img src="evolution/key_dev.png" height = "300"/></p>
+<p align="center">Key Development</p>
 
 ### Layout
 <p align="center"><img src="evolution/layout.png" width = "300"/></p>
@@ -27,8 +32,6 @@ The rooms themselves also had a major redesign in order to fit with the room-mak
 <p align="center">Layout 2</p>
 
 ### Others after redesign
-<p align="center"><img src="evolution/witch.png" height = "500"/></p>
-<p align="center">Witch</p>
 <p align="center"><img src="evolution/door.png" width = "300"/></p>
 <p align="center">Door</p>
 <p align="center"><img src="evolution/fire.png" width = "300"/></p>
