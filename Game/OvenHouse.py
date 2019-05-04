@@ -10,6 +10,7 @@ import math
 
 import show_text as st
 import choose_char as cc
+import end_game as eg
 
 # Motion offsets for particular directions
 #     N  E  S   W
@@ -557,8 +558,7 @@ class Game(object):
                 self.witch.update()
             if self.player.pos == self.witch.pos:
                 print("Game over!")
-                st.main()
-                exit()
+                st.main(self.Second,self.Minute,self.Hour)
             for i in range(len(self.keynum)):
                 if self.player.pos == self.key[i].pos and self.key[i].gotKey == False:
                     self.key[i].gotKey = True
@@ -568,8 +568,7 @@ class Game(object):
             for i in range(len(self.enemynum)):
                 if self.player.pos == self.enemy[i].pos:
                     print('Game Over')
-                    st.main()
-                    exit()
+                    st.main(self.Second,self.Minute,self.Hour)
                 elif self.enemy[i].animation is None:
                     self.enemy[i].de = self.enemy_walk(self.enemy[i])
                     self.enemy[i].update()
@@ -621,6 +620,8 @@ if __name__ == "__main__":
     SPRITE_CACHE = TileCache()
     MAP_CACHE = TileCache(MAP_TILE_WIDTH, MAP_TILE_HEIGHT)
     TILE_CACHE = TileCache(16, 24)
+    pygame.mixer.music.load("Ovenhouse.ogg")
+    pygame.mixer.music.play(-1) # repeat 5 times
 
     pygame.init()
 

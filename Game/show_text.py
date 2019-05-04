@@ -3,6 +3,8 @@ import time
 import sys
 from pygame import font
 
+import end_game as eg
+
 
 # ONE: make the screen stay on until the user clicks the next button
 # TWO: make the text center
@@ -41,7 +43,7 @@ def blink_text(str, tuple, rgb,line_space,screen,basicfont,screen_width,screen_h
     pygame.display.update(textrect)
 
 
-def main():
+def main(Second, Minute, Hour):
     pygame.init()
     screen_width = 800
     screen_height = 600
@@ -63,10 +65,10 @@ def main():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+                eg.end(Second,Minute,Hour)
+                exit()
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    pygame.quit()
-                    sys.exit()
+                    eg.end(Second,Minute,Hour)
+                    exit()
