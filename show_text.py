@@ -41,9 +41,9 @@ def blink_text(str, tuple, rgb,line_space,screen,basicfont):
     pygame.display.update(textrect)
 
 
-def main():
+def end_game(size):
     pygame.init()
-    screen = pygame.display.set_mode([800,800])
+    screen = pygame.display.set_mode(size)
     line_space = 32
 
     basicfont = pygame.font.Font('8bitoperator.ttf', 16)
@@ -52,12 +52,11 @@ def main():
     text_ani("but she WASN'T!", (0, 3),line_space,basicfont,screen)
     text_ani('You have destroyed her lovely house and invaded it,', (0, 4),line_space,basicfont,screen)
     text_ani('and the witch was simply trying to kick you out…', (0, 5),line_space,basicfont,screen)
-    text_ani('You now are an outlaw! Ayy', (0, 6),line_space,basicfont,screen)
+    text_ani('You now are an outlaw! (ᵔᴥᵔ)', (0, 6),line_space,basicfont,screen)
     text_ani('PRESS SPACEBAR TO PROCEED', (0, 8),line_space,basicfont,screen)
 
     while True:
         blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (254,254,254),line_space,screen,basicfont)
-        blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (0,0,0),line_space, screen,basicfont)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -68,3 +67,53 @@ def main():
                 if event.key == pygame.K_SPACE:
                     pygame.quit()
                     sys.exit()
+        blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (0,0,0),line_space, screen,basicfont)
+
+
+def contact_fire(size):
+        pygame.init()
+        screen = pygame.display.set_mode(size)
+        line_space = 32
+
+        basicfont = pygame.font.Font('8bitoperator.ttf', 16)
+        text_ani("You were caught by one of witch's minions...", (0, 1), line_space,basicfont,screen)
+        text_ani('You are now adequately roasted for the witch to gobble you up!', (0, 2),line_space,basicfont,screen)
+        text_ani('PRESS SPACEBAR TO PROCEED', (0, 4),line_space,basicfont,screen)
+
+        while True:
+            blink_text('PRESS SPACEBAR TO PROCEED', (0, 4), (254,254,254),line_space,screen,basicfont)
+            blink_text('PRESS SPACEBAR TO PROCEED', (0, 4), (0,0,0),line_space, screen,basicfont)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        pygame.quit()
+                        sys.exit()
+
+def contact_witch(size):
+        pygame.init()
+        screen = pygame.display.set_mode(size)
+        line_space = 32
+
+        basicfont = pygame.font.Font('8bitoperator.ttf', 16)
+        text_ani("You were caught by the witch herself...", (0, 1), line_space,basicfont,screen)
+        text_ani('She is enranged at you and says,', (0, 2),line_space,basicfont,screen)
+        text_ani('"I got a lot of recipes that I can use on you!"', (0, 3),line_space,basicfont,screen)
+
+        while True:
+            blink_text('PRESS SPACEBAR TO PROCEED', (0, 5), (254,254,254),line_space,screen,basicfont)
+            blink_text('PRESS SPACEBAR TO PROCEED', (0, 5), (0,0,0),line_space, screen,basicfont)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        pygame.quit()
+                        sys.exit()
