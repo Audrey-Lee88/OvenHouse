@@ -41,7 +41,7 @@ def blink_text(str, tuple, rgb,line_space,screen,basicfont,screen_width,screen_h
     pygame.display.update(textrect)
 
 
-def end_game():
+def main():
     pygame.init()
     screen_width = 800
     screen_height = 600
@@ -54,11 +54,12 @@ def end_game():
     text_ani("but she WASN'T!", (0, 3),line_space,basicfont,screen,screen_width,screen_height)
     text_ani('You have destroyed her lovely house and invaded it,', (0, 4),line_space,basicfont,screen,screen_width,screen_height)
     text_ani('and the witch was simply trying to kick you out…', (0, 5),line_space,basicfont,screen,screen_width,screen_height)
-    text_ani('You now are an outlaw!', (0, 6),line_space,basicfont,screen,screen_width,screen_height)
+    text_ani('You now are an outlaw! Ayy', (0, 6),line_space,basicfont,screen,screen_width,screen_height)
     text_ani('PRESS SPACEBAR TO PROCEED', (0, 8),line_space,basicfont,screen,screen_width,screen_height)
 
     while True:
         blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (254,254,254),line_space,screen,basicfont,screen_width,screen_height)
+        blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (0,0,0),line_space, screen,basicfont,screen_width,screen_height)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -69,58 +70,3 @@ def end_game():
                 if event.key == pygame.K_SPACE:
                     pygame.quit()
                     sys.exit()
-        blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (0,0,0),line_space, screen,basicfont,screen_width,screen_height)
-
-
-def contact_fire():
-        pygame.init()
-        screen_width = 800
-        screen_height = 600
-        screen = pygame.display.set_mode([screen_width,screen_height])
-        line_space = 32
-
-        basicfont = pygame.font.Font('8bitoperator.ttf', 16)
-        text_ani("You were caught by one of witch's minions...", (0, 1), line_space,basicfont,screen,screen_width,screen_height)
-        text_ani('You are now adequately roasted for the witch to gobble you up!', (0, 2),line_space,basicfont,screen,screen_width,screen_height)
-        text_ani('PRESS SPACEBAR TO PROCEED', (0, 4),line_space,basicfont,screen,screen_width,screen_height)
-
-        while True:
-            blink_text('PRESS SPACEBAR TO PROCEED', (0, 4), (254,254,254),line_space,screen,basicfont,screen_width,screen_height)
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        pygame.quit()
-                        sys.exit()
-            blink_text('PRESS SPACEBAR TO PROCEED', (0, 4), (0,0,0),line_space, screen,basicfont,screen_width,screen_height)
-
-
-def contact_witch():
-        pygame.init()
-        screen_width = 800
-        screen_height = 600
-        screen = pygame.display.set_mode([screen_width,screen_height])
-        line_space = 32
-
-        basicfont = pygame.font.Font('8bitoperator.ttf', 16)
-        text_ani("You were caught by the witch herself...", (0, 1), line_space,basicfont,screen,screen_width,screen_height)
-        text_ani('She is enranged at you and says,', (0, 2),line_space,basicfont,screen,screen_width,screen_height)
-        text_ani('"I got a lot of recipes that I can use on you!"', (0, 3),line_space,basicfont,screen,screen_width,screen_height)
-
-        while True:
-            blink_text('PRESS SPACEBAR TO PROCEED', (0, 5), (254,254,254),line_space,screen,basicfont,screen_width,screen_height)
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        pygame.quit()
-                        sys.exit()
-            blink_text('PRESS SPACEBAR TO PROCEED', (0, 5), (0,0,0),line_space, screen,basicfont,screen_width,screen_height)

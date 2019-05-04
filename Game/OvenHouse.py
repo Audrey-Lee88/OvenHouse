@@ -8,7 +8,6 @@ import pygame.locals as pg
 import random
 import math
 
-#from timer2 import timer
 import show_text as st
 import choose_char as cc
 
@@ -507,6 +506,32 @@ class Game(object):
 
     def main(self):
         count = 0
+        self.Second = 0
+        self.Minute = 0
+        self.Hour = 0
+
+        White = (255, 255, 255)
+        #Fonts
+        Font = pygame.font.SysFont("Trebuchet MS", 25)
+
+        #Day
+        DayFont = Font.render("Hour:{0:03}".format(self.Hour),1, White) #zero-pad day to 3 digits
+        DayFontR=DayFont.get_rect()
+        DayFontR.center=(1285,100)
+        #Hour
+        HourFont = Font.render("Minute:{0:02}".format(self.Minute),1, White) #zero-pad hours to 2 digits
+        HourFontR=HourFont.get_rect()
+        HourFontR.center=(1385,100)
+        #Minute
+        MinuteFont = Font.render("Second:{0:02}".format(self.Second),1, White) #zero-pad minutes to 2 digits
+        MinuteFontR=MinuteFont.get_rect()
+        MinuteFontR.center=(1500,100)
+
+        #Clock functioning
+        Clock = pygame.time.Clock()
+        CLOCKTICK = pygame.USEREVENT+1
+        pygame.time.set_timer(CLOCKTICK, 1000)
+
         """Run the main loop."""
         for i in range(len(self.enemynum)):
             self.enemy[i].de = random.randint(0,3)
@@ -563,19 +588,41 @@ class Game(object):
             # Update the dirty areas of the screen
             pygame.display.update(dirty)
             # Wait for one tick of the game clock
+
             clock.tick(15)
             # Process pygame events
             for event in pygame.event.get():
                 if event.type == pg.QUIT:
                     self.game_over = True
+                if event.type == CLOCKTICK: # count up the clock
+                    #Timer
+                    self.Second += 1
+                    if self.Second == 60:
+                        self.Minute+=1
+                        self.Second=0
+                    if self.Minute==60:
+                        self.Hour+=1
+                        self.Minute=0
+                    # redraw time
+                    MinuteFont = Font.render("Second:{0:02}".format(self.Second),1, White)
+                    pygame.draw.rect(self.screen, (0, 0, 0),(1200, 50, 1000, 100))
+                    self.screen.blit(MinuteFont, MinuteFontR)
+                    HourFont = Font.render("Minute:{0:02}".format(self.Minute),1, White)
+                    self.screen.blit(HourFont, HourFontR)
+                    DayFont = Font.render("Hour:{0:03}".format(self.Hour),1, White)
+                    self.screen.blit(DayFont, DayFontR)
+                    pygame.display.flip()
                 elif event.type == pg.KEYDOWN:
                     self.pressed_key = event
+
+
 
 if __name__ == "__main__":
     SPRITE_CACHE = TileCache()
     MAP_CACHE = TileCache(MAP_TILE_WIDTH, MAP_TILE_HEIGHT)
     TILE_CACHE = TileCache(16, 24)
+
     pygame.init()
 
-    pygame.display.set_mode((1200, 600))
+    pygame.display.set_mode((1600, 600))
     Game().main()
