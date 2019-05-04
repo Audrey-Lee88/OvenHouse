@@ -1,5 +1,16 @@
 | [Home](index.md) 	| [Project Evolution](ProjectEvolution.md)  | [Game Architecture](GameArchitecture.md) 	| [About Us!](AboutUs.md)
 
+## Idea Evolution
+OvenHouse had humble beginnings, we had no idea which direction we wanted to go with our final project. After our first conversation, we knew we wanted to build some an enjoyable game. Over the next two meetings, we decided to move forward with a classic fable, and specifically, Hansel & Gretel. 
+
+# Other Leading Ideas
+The Boy Who Cried Wolf: You are the boy going around a dark village looking for villagers while avoiding the wolf
+Save the Titanic: You are trying to get to the captain's control room
+Pandoras Box: You decide not to open box, you win, if you open the box you need to solve puzzles
+
+At this point, week three, we split up tasks and stuck with them for the duration of the project. Caleb on the timer + project organization + video, Audrey on the controls + backend + movement + collision, HK on the witch + text generation + key generation, and Kristtiya on custom artwork. The only non-artwork, and non-code pivot was with the video. The video began as a segmented short with each team member walking users through their contribution. It ended up being a fluid full gameplay with each player pointing out what they worked on and talking listeners through their process.
+
+
 ## Artwork Evolution
 Our project went through a few design iterations that varied due to the program, and also due to peer review.
 
