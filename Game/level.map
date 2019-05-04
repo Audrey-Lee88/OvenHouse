@@ -21,7 +21,7 @@ map =   ..................................................
         .X.XXXXXX....XXXX....XXXXX..s....s..............X.
 	.X.XgXX.XXX.....X....XXXXX....s....XXXXXs....s..X.
 	.X...................................r..........X.
-	.X.......................Xs.....................X.
+	.X....b..................Xs.....................X.
 	.X...........s....s......X..s.......s....s......X.
 	.X........XXXXXXX........X....................s.X.
 	.X...XXXX....XXXX....XXXXX..s...XX....s.XXXXXX..X.
@@ -149,6 +149,12 @@ block = true
 name = Dresser
 tile = 0, 0
 sprite = cabinet3.png
+block = true
+
+[b]
+name = Bed
+tile = 1, 3
+sprite = bed.png
 block = true
 
 [l]
