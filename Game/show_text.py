@@ -19,7 +19,7 @@ def text_ani(str, tuple,line_space,basicfont,screen,screen_width,screen_height):
         char = char + str[letter]
         text = basicfont.render(char, False, (254, 254, 254), (0, 0, 0)) #First tuple is text color, second tuple is background color
         textrect = text.get_rect(topleft=(x, y)) ## x, y's provided in function call. y coordinate amended by line height where needed
-        textrect.center = (screen_width/2), (textrect[1] + screen_height/3)
+        textrect.center = (textrect[0] +screen_width/2), (textrect[1] + screen_height/3)
 
         screen.blit(text, textrect)
         pygame.display.update(textrect) ## update only the text just added without removing previous lines.

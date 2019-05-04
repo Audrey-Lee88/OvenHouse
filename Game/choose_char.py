@@ -17,8 +17,9 @@ def main():
     Rectplace2 = window.blit(img2,(350,100))
     pygame.display.update()
     # Main Loop
-    st.text_ani('Choose', (0, 0), line_space,basicfont,window,screen_width, screen_height)
-    st.text_ani('Gretel                       Hansel', (0, 9), line_space,basicfont,window,screen_width, screen_height)
+    st.text_ani('Choose', (0, -5), line_space,basicfont,window,screen_width, screen_height)
+    st.text_ani('Gretel', (-150, 9), line_space,basicfont,window,screen_width, screen_height)
+    st.text_ani('Hansel', (150, 9), line_space,basicfont,window,screen_width, screen_height)
     while running:
         # Mouse position and button clicking.
         pos = pygame.mouse.get_pos()
