@@ -6,12 +6,10 @@ from pygame import font
 import end_game as eg
 
 
-# ONE: make the screen stay on until the user clicks the next button
-# TWO: make the text center
 def text_ani(str, tuple,line_space,basicfont,screen,screen_width,screen_height):
     x, y = tuple
     y = y * line_space ##shift text down by one line
-    char = ''        ##new string that will take text one char at a time. Not the best variable name I know.
+    char = ''        ##new string that will take text one char at a time
     letter = 0
     count = 0
     for i in range(len(str)):
@@ -43,7 +41,7 @@ def blink_text(str, tuple, rgb,line_space,screen,basicfont,screen_width,screen_h
     pygame.display.update(textrect)
 
 
-def main(Second, Minute, Hour):
+def win_game(Second, Minute, Hour):
     pygame.init()
     screen_width = 800
     screen_height = 600
@@ -61,7 +59,6 @@ def main(Second, Minute, Hour):
 
     while True:
         blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (254,254,254),line_space,screen,basicfont,screen_width,screen_height)
-        blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (0,0,0),line_space, screen,basicfont,screen_width,screen_height)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -72,3 +69,60 @@ def main(Second, Minute, Hour):
                 if event.key == pygame.K_SPACE:
                     eg.end(Second,Minute,Hour)
                     exit()
+        blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (0,0,0),line_space, screen,basicfont,screen_width,screen_height)
+
+def contact_fire(Second, Minute, Hour):
+        pygame.init()
+        screen_width = 800
+        screen_height = 600
+        screen = pygame.display.set_mode([screen_width,screen_height])
+        line_space = 32
+
+        basicfont = pygame.font.Font('8bitoperator.ttf', 16)
+        text_ani("You were caught by one of witch's minions...", (0, 1), line_space,basicfont,screen,screen_width,screen_height)
+        text_ani('You are now adequately roasted for the witch to gobble you up!', (0, 2),line_space,basicfont,screen,screen_width,screen_height)
+        text_ani('PRESS SPACEBAR TO PROCEED', (0, 4),line_space,basicfont,screen,screen_width,screen_height)
+
+        while True:
+            blink_text('PRESS SPACEBAR TO PROCEED', (0, 4), (254,254,254),line_space,screen,basicfont,screen_width,screen_height)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    eg.end(Second,Minute,Hour)
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        eg.end(Second,Minute,Hour)
+                        pygame.quit()
+                        sys.exit()
+            blink_text('PRESS SPACEBAR TO PROCEED', (0, 4), (0,0,0),line_space, screen,basicfont,screen_width,screen_height)
+
+def contact_witch(Second, Minute, Hour):
+        pygame.init()
+        screen_width = 800
+        screen_height = 600
+        screen = pygame.display.set_mode([screen_width,screen_height])
+        line_space = 32
+
+        basicfont = pygame.font.Font('8bitoperator.ttf', 16)
+        text_ani("You were caught by the witch herself...", (0, 1), line_space,basicfont,screen,screen_width,screen_height)
+        text_ani('She is enranged at you and says,', (0, 2),line_space,basicfont,screen,screen_width,screen_height)
+        text_ani('"I got a lot of recipes that I can use on you!"', (0, 3),line_space,basicfont,screen,screen_width,screen_height)
+
+        while True:
+            blink_text('PRESS SPACEBAR TO PROCEED', (0, 5), (254,254,254),line_space,screen,basicfont,screen_width,screen_height)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    eg.end(Second,Minute,Hour)
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        eg.end(Second,Minute,Hour)
+                        pygame.quit()
+                        sys.exit()
+            blink_text('PRESS SPACEBAR TO PROCEED', (0, 5), (0,0,0),line_space, screen,basicfont,screen_width,screen_height)
