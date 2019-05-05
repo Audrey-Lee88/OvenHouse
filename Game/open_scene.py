@@ -1,5 +1,6 @@
 import pygame
 import show_text as st
+import choose_char as cc
 
 def main():
     pygame.init()
@@ -17,19 +18,17 @@ def main():
     st.text_ani('Only then, can you can enter the door with a keyhole to escape.', (0, 4), line_space,basicfont,window,screen_width, screen_height)
     st.text_ani("Do NOT run into the witch's minions (the balls of fire) or the witch herself!", (0, 5), line_space,basicfont,window,screen_width, screen_height)
     st.text_ani('Well then, GOOD LUCK!', (0, 6), line_space,basicfont,window,screen_width, screen_height)
-    st.text_ani('PRESS SPACEBAR TO PROCEED', (0, 8),line_space,basicfont, window,screen_width,screen_height)
 
     while running:
-        st.blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (254,254,254),line_space, window, basicfont,screen_width,screen_height)
+        st.blink_text('EXIT THE WINDOW TO PROCEED', (0, 8), (254,254,254),line_space, window, basicfont,screen_width,screen_height)
+        st.blink_text('EXIT THE WINDOW  TO PROCEED', (0, 8), (0,0,0),line_space, window, basicfont, screen_width,screen_height)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+                character = cc.main()
+                return character
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    running = False
-        st.blink_text('PRESS SPACEBAR TO PROCEED', (0, 8), (0,0,0),line_space, window, basicfont, screen_width,screen_height)
 
 
 if __name__ == "__main__":

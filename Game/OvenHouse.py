@@ -11,7 +11,7 @@ import math
 import show_text as st
 import choose_char as cc
 import end_game as eg
-import open_scene as os
+import open_scene as open
 
 # Motion offsets for particular directions
 #     N  E  S   W
@@ -220,8 +220,7 @@ class Player(Sprite):
     """ Display and animate the player character."""
 
     is_player = True
-    initial_screen =os.main()
-    which_player = cc.main()
+    which_player = open.main()
 
     def __init__(self, pos=(1, 1)):
         if self.which_player == 1:
