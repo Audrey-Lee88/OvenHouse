@@ -11,6 +11,7 @@ import math
 import show_text as st
 import choose_char as cc
 import end_game as eg
+import open_scene as os
 
 # Motion offsets for particular directions
 #     N  E  S   W
@@ -219,6 +220,7 @@ class Player(Sprite):
     """ Display and animate the player character."""
 
     is_player = True
+    initial_screen =os.main()
     which_player = cc.main()
 
     def __init__(self, pos=(1, 1)):
@@ -558,7 +560,7 @@ class Game(object):
                 self.witch.update()
             if self.player.pos == self.witch.pos:
                 print("Game over!")
-                st.main(self.Second,self.Minute,self.Hour)
+                st.contact_witch(self.Second,self.Minute,self.Hour)
             for i in range(len(self.keynum)):
                 if self.player.pos == self.key[i].pos and self.key[i].gotKey == False:
                     self.key[i].gotKey = True
@@ -568,7 +570,7 @@ class Game(object):
             for i in range(len(self.enemynum)):
                 if self.player.pos == self.enemy[i].pos:
                     print('Game Over')
-                    st.main(self.Second,self.Minute,self.Hour)
+                    st.contact_fire(self.Second,self.Minute,self.Hour)
                 elif self.enemy[i].animation is None:
                     self.enemy[i].de = self.enemy_walk(self.enemy[i])
                     self.enemy[i].update()
@@ -576,6 +578,7 @@ class Game(object):
                 if self.player.pos == self.exit.pos:
                     if self.current == self.last:
                         print('done')
+                        st.win_game(self.Second,self.Minute,self.Hour)
                         exit()
                     self.next_level()
                     count = 0
