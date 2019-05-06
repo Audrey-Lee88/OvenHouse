@@ -31,7 +31,7 @@ If you do not have configparser:
 pip install configparser
 ```
 
-After these libraries have been downloaded, also **download** the **artwork** and the **font file** to a file accessible by our master code
+After these libraries have been downloaded, also make sure the **artwork** and the **font file** are downloaded and accessible by our master code
 
 ## Usage
 ### Run Program 
