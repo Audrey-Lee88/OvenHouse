@@ -8,7 +8,7 @@
 Class of 2022 at Olin College of Engineering
 
 # HK Rho
-<img src="hk.png" width="300" height="300" />
+<img src="hk_picture.jpg" width="300" height="300" />
 
 Class of 2022 at Olin College of Engineering
 
