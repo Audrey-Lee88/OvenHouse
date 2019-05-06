@@ -45,11 +45,17 @@ Anyone is welcome to use this code. We have opted into the Open Source Initiativ
 "The license shall not restrict any party from selling or giving away the software as a component of an aggregate software distribution containing programs from several different sources. The license shall not require a royalty or other fee for such sale."
 
 #### Acknowledgments
-Thanks to the QQ PyGame Tutorial for tips on how to create a tile based game.
+Thanks to the QQ PyGame Tutorial for tips on creating a tile based game.
+Thanks to Stephen Nickalls in Stack Overflow on displaying letters one at a time.
 Special thanks to everyone who gave us helpful feedback regarding art-style, gameplay, and in-game mechanics.
 
 #### How to Build on the Game
-TODO: add explanation here
+Here are some areas that we strongly feel that would greatly benefit from improvements:
+##### *1. Incorporation of More Artwork*
+##### *2. Enhancement of Witch Chasing Algorithm*
+Improve the algorithm so that the witch does not glitch as much when she is chasing the player. Improve so that the witch does not get stuck in the wall at times.
+##### *3. Addition of Assets*
+Add extra fun items for the player to pick up while playing the game, or add extra fun features to the witch like teleportation.
 
 #### Authors
 [**Audrey Lee**](https://github.com/Audrey-Lee88)
