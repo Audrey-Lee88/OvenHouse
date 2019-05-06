@@ -1,13 +1,13 @@
 """
 
 """
-
+#importing libraries
 import configparser
 import pygame
 import pygame.locals as pg
 import random
 import math
-
+#import python scripts
 import show_text as st
 import choose_char as cc
 import end_game as eg
@@ -31,7 +31,7 @@ class SortedUpdates(pygame.sprite.RenderUpdates):
 
 
 class TileCache(object):
-    """Load the tilesets lazily into global cache"""
+    """Load the tilesets into global cache"""
 
     def __init__(self,  width=32, height=None):
         self.width = width
