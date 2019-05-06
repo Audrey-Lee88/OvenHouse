@@ -31,31 +31,31 @@ Gretel for example now has no defined hair color or skin color in order to allow
 The rooms themselves also had a major redesign in order to fit with the room-making algorithm. Rather than being individual pngs, they features are all on bitmaps and have been redesigned and resized. 
 
 
-Gretel
+### Gretel
 <p align="center"><img src="gretel_dev.jpg" height = "300"/></p>
 <p align="center">Gretel Development</p>
 
-Hansel
+### Hansel
 <p align="center"><img src="evolution/hansel.png" height = "300"/></p>
 
-Witch
+### Witch
 <p align="center"><img src="evolution/witch_dev.png" height = "300"/></p>
 <p align="center">Witch Development</p>
 
-Sprites
-<p align="center"><img src="evolution/sprites.png" height = "300"/></p>
+### Sprites
+<p align="center"><img src="evolution/sprites.png" /></p>
 <p align="center">Sprite Movements</p>
 
-Key
+### Key
 <p align="center"><img src="evolution/key_dev.png" height = "300"/></p>
 <p align="center">Key Development</p>
 
-Layout
+### Layout
 <p align="center"><img src="evolution/layout.png" width = "300"/></p>
 <p align="center">Layout 1</p>
 <p align="center"><img src="evolution/layout2.png" width = "300"/></p>
 <p align="center">Layout 2</p>
 
-Others after redesign
+### Others after redesign
 <p align="center"><img src="evolution/furniture.png" width = "300"/></p>
 <p align="center">Sample Furnitures</p>
