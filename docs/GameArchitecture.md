@@ -8,9 +8,9 @@
 </p>
 
 ### Controls
-The controls are located in the main script which allows the player to move using the arrow keys and interact with enemies and items. If the player runs into an enemy, the game ends, and it's Game Over. 
+The controls are located in the main script - "Ovenhouse.py" - which allows the player to move using the arrow keys and interact with enemies and items. If the player runs into an enemy or the witch, the game ends, and it's Game Over. 
 
-The Game class represents what the player sees and interacts with. The Levels class sets up the levels and each “item” in the levels for the player to see. The Sprite class is connected to all of the interactive sprites (Player, Minions, Witch, and Key) to establish the animations and updates for the sprites. The Minions class updates the minion's movements and collisions. The Witch class will include the code for the witch movement. The Player class is the sprite the player controls. The TileCache class takes the images and divides them into “tiles” to be put into the levels. The SortedUpdates class sorts the sprites by depth.
+The Game class represents what the player sees and interacts with. The Levels class sets up the levels and each “item” in the levels for the player to see. The Sprite class is connected to all of the interactive sprites (Player, Minions, Witch, Key, and Exit) to establish the animations and updates for the sprites. The Minions class updates the minion's movements and collisions. The Witch class will include the code for the witch movement. The Player class is the sprite the player controls. The Witch classes displays the witch and has it move towards the player. The Key class initializes which key is displayed where. The Exit class initializes the exit door so it can be accessible by the player. The TileCache class takes the images and divides them into “tiles” to be put into the levels. The The SortedUpdates class sorts the sprites by depth.
 
 
 ### Integrating Art
