@@ -2,6 +2,7 @@ import pygame
 import show_text as st
 
 def main():
+    """Displays the characters the player can choose from"""
     pygame.init()
     screen_width, screen_height = 600, 600
     window = pygame.display.set_mode((screen_width, screen_height))
@@ -25,7 +26,7 @@ def main():
         pos = pygame.mouse.get_pos()
         pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
 
-        # Check if the rect collided with the mouse pos and if the left mouse button was pressed.
+        # Check if the rect collided with the mouse pos and if the mouse button was pressed.
         if Rectplace.collidepoint(pos) and (pressed1 or pressed2 or pressed3):
             print("You have picked Gretel")
             return 1

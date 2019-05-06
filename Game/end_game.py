@@ -3,6 +3,7 @@ import pygame
 import show_text as st
 
 def end(Second,Minute,Hour):
+    """Displays the final time the player finished the game or died"""
     pygame.init()
     screen_width, screen_height = 600, 600
     window = pygame.display.set_mode((screen_width, screen_height))

@@ -1,5 +1,13 @@
 """
+A suspensful gaming experience based off of Hansel & Gretel.
 
+The goal of the player is to escape from the witch.
+To progress through the game, the player must collect parts of keys and exit
+through the key-hole shaped door while avoiding the witch and the minions.
+
+First level: Oven, Second level: House, Third level: Woods
+
+@author: Audrey Lee, HK Rho, Kristtiya Guerra, & Caleb Wursten
 """
 #importing libraries
 import configparser
@@ -114,6 +122,7 @@ class Sprite(pygame.sprite.Sprite):
         next(self.animation)
 
 class Exit(Sprite):
+    """Create a sprite for the Exit door"""
 
     def __init__(self, pos=(5, 1)):
         self.frames = SPRITE_CACHE["door.png"]
@@ -123,7 +132,11 @@ class Exit(Sprite):
         self.image = self.frames[self.direction][0]
 
     def update(self, *args):
-        """Updates "animation" of door"""
+        """Updates "animation" of door
+        Even though the door is stationary, and does not have
+        different frames for an animation, this is necessary for the code
+        so it knows that every update is just the same frame.
+        """
 
         if self.animation is None:
             self.image = self.frames[0][0]
@@ -134,8 +147,9 @@ class Exit(Sprite):
                 self.animation = None
 
 class Key(Sprite):
-
+    """Create a sprite for the Key"""
     def __init__(self, pos=(3, 1),key_pic = 1):
+        #Determine which picture of the key is displayed at a certain pos
         if key_pic == 1:
             self.frames = SPRITE_CACHE["key1_small.png"]
         if key_pic == 2:
@@ -146,7 +160,11 @@ class Key(Sprite):
         self.image = self.frames[self.direction][0]
 
     def update(self, *args):
-        """Updates "animation" of key"""
+        """Updates "animation" of key
+        Even though the key is stationary, and does not have
+        different frames for an animation, this is necessary for the code
+        so it knows that every update is just the same frame.
+        """
 
         if self.animation is None:
             self.image = self.frames[0][0]
@@ -157,7 +175,7 @@ class Key(Sprite):
                 self.animation = None
 
 class Enemy(Sprite):
-
+    """Display and animate the minions"""
     def __init__(self, pos=(2, 1)):
         self.frames = SPRITE_CACHE["fire.png"]
         Sprite.__init__(self, pos)
@@ -188,7 +206,7 @@ class Enemy(Sprite):
                 self.animation = None
 
 class Witch(Sprite):
-
+    """Display and animate the witch"""
     def __init__(self, pos=(4, 1)):
         self.frames = SPRITE_CACHE["witch.png"]
         Sprite.__init__(self, pos)
@@ -208,6 +226,7 @@ class Witch(Sprite):
                 self.animation = None
 
     def move_towards_player(self):
+        """Animation for the witch moving"""
         for frame in range(4):
             self.image = self.frames[self.direction][frame]
             yield None
@@ -220,9 +239,11 @@ class Player(Sprite):
     """ Display and animate the player character."""
 
     is_player = True
+    #Determines if Hansel or Gretel was picked
     which_player = open.main()
 
     def __init__(self, pos=(1, 1)):
+        #Displays the character the player chose
         if self.which_player == 1:
             self.frames = SPRITE_CACHE["player.png"]
         if self.which_player == 2:
@@ -429,12 +450,15 @@ class Game(object):
             overlay.rect = image.get_rect().move(x*24, y*16-16)
 
     def witch_blocking(self,x,y):
+        """Checks if the there is something blocking in the direction the witch is moving"""
         if not self.level.is_blocking(x+DX[self.witch.direction], y+DY[self.witch.direction]):
             self.witch.animation = self.witch.move_towards_player()
 
     def witch_move(self):
+        """The witch will move depending on where the player is located"""
         x, y = self.witch.pos
         px, py = self.player.pos
+        #If the player is to the right of the witch, the witch will move to the right (etc)
         if x < px:
             self.witch.direction = 1
             self.witch_blocking(x,y)
@@ -449,12 +473,15 @@ class Game(object):
             self.witch_blocking(x,y)
 
     def enemy_walk(self,enemy):
+        """Method that determines how the enemies will move"""
         x,y = enemy.pos
         enemy.direction = enemy.de
+        #If nothing is blockign the enemy, the enemy will continue to move in the same direction
         if not self.level.is_blocking(x+DX[enemy.de],y+DY[enemy.de]):
             enemy.animation = enemy.walk_animation()
             return enemy.de
         else:
+            #If something is blocking the enemy, the enemy will switch directions
             if enemy.de == 2:
                 return 0
             elif enemy.de == 0:
@@ -481,7 +508,7 @@ class Game(object):
             self.player.direction = d
             if not self.level.is_blocking(x+DX[d], y+DY[d]):
                 self.player.animation = self.player.walk_animation()
-
+        #Input of arrow keys for player movement
         if pressed(pg.K_UP):
             walk(0)
         elif pressed(pg.K_DOWN):
@@ -493,6 +520,7 @@ class Game(object):
         self.pressed_key = None
 
     def next_level(self):
+        #Checks which level currently at, and changes to next level
         if self.current == 'level1':
             self.current = 'level2'
         elif self.current == 'level2':
@@ -507,6 +535,8 @@ class Game(object):
         pygame.display.flip()
 
     def main(self):
+        """Run main game loop"""
+        #intialize seconds, minutes, hour for timer
         count = 0
         self.Second = 0
         self.Minute = 0
@@ -517,15 +547,18 @@ class Game(object):
         Font = pygame.font.SysFont("Trebuchet MS", 25)
 
         #Day
-        DayFont = Font.render("Hour:{0:03}".format(self.Hour),1, White) #zero-pad day to 3 digits
+        #zero-pad day to 3 digits
+        DayFont = Font.render("Hour:{0:03}".format(self.Hour),1, White)
         DayFontR=DayFont.get_rect()
         DayFontR.center=(1285,100)
         #Hour
-        HourFont = Font.render("Minute:{0:02}".format(self.Minute),1, White) #zero-pad hours to 2 digits
+        #zero-pad hours to 2 digits
+        HourFont = Font.render("Minute:{0:02}".format(self.Minute),1, White)
         HourFontR=HourFont.get_rect()
         HourFontR.center=(1385,100)
         #Minute
-        MinuteFont = Font.render("Second:{0:02}".format(self.Second),1, White) #zero-pad minutes to 2 digits
+        #zero-pad minutes to 2 digits
+        MinuteFont = Font.render("Second:{0:02}".format(self.Second),1, White)
         MinuteFontR=MinuteFont.get_rect()
         MinuteFontR.center=(1500,100)
 
@@ -533,8 +566,7 @@ class Game(object):
         Clock = pygame.time.Clock()
         CLOCKTICK = pygame.USEREVENT+1
         pygame.time.set_timer(CLOCKTICK, 1000)
-
-        """Run the main loop."""
+        #Initialize enemy direction
         for i in range(len(self.enemynum)):
             self.enemy[i].de = random.randint(0,3)
         clock = pygame.time.Clock()
@@ -549,23 +581,24 @@ class Game(object):
             self.sprites.clear(self.screen, self.background)
             self.sprites.update()
             # If the player's animation is finished, check for keypresses
-
-
             if self.player.animation is None:
                 self.control()
                 self.player.update()
             if self.witch.animation is None:
                 self.witch_move()
                 self.witch.update()
+            #If player collides with the witch, it's game over
             if self.player.pos == self.witch.pos:
                 print("Game over!")
                 st.contact_witch(self.Second,self.Minute,self.Hour)
+            #If the player collects a key, save which key was collected
             for i in range(len(self.keynum)):
                 if self.player.pos == self.key[i].pos and self.key[i].gotKey == False:
                     self.key[i].gotKey = True
                     count += 1
                 if self.key[i].gotKey == True:
                     self.key[i].image = self.key[i].frames[1][0]
+            #If player collides with any of the enemies, it's game over
             for i in range(len(self.enemynum)):
                 if self.player.pos == self.enemy[i].pos:
                     print('Game Over')
@@ -573,8 +606,11 @@ class Game(object):
                 elif self.enemy[i].animation is None:
                     self.enemy[i].de = self.enemy_walk(self.enemy[i])
                     self.enemy[i].update()
+            #If all keys are collected
             if count == 2:
+                #If player reaches exit
                 if self.player.pos == self.exit.pos:
+                    #If all levels are finished
                     if self.current == self.last:
                         print('done')
                         st.win_game(self.Second,self.Minute,self.Hour)
@@ -604,7 +640,7 @@ class Game(object):
                     if self.Minute==60:
                         self.Hour+=1
                         self.Minute=0
-                    # redraw time
+                    # redraw time and display it
                     MinuteFont = Font.render("Second:{0:02}".format(self.Second),1, White)
                     pygame.draw.rect(self.screen, (0, 0, 0),(1200, 50, 1000, 100))
                     self.screen.blit(MinuteFont, MinuteFontR)
@@ -619,11 +655,13 @@ class Game(object):
 
 
 if __name__ == "__main__":
+    #Initializes different caches from map
     SPRITE_CACHE = TileCache()
     MAP_CACHE = TileCache(MAP_TILE_WIDTH, MAP_TILE_HEIGHT)
     TILE_CACHE = TileCache(16, 24)
+    # Load music
     pygame.mixer.music.load("Ovenhouse.ogg")
-    pygame.mixer.music.play(-1) # repeat 5 times
+    pygame.mixer.music.play(-1) # repeat on loop
 
     pygame.init()
 

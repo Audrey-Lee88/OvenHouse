@@ -3,6 +3,7 @@ import show_text as st
 import choose_char as cc
 
 def main():
+    """Displays the instructions for the game"""
     pygame.init()
     screen_width, screen_height = 1200, 800
     window = pygame.display.set_mode((screen_width, screen_height))

@@ -4,6 +4,8 @@ import choose_char as cc
 import instructions as ins
 
 def main():
+    """Opening scene to choose whether to immediately start
+    the game or read instructions"""
     pygame.init()
     screen_width, screen_height = 500, 500
     window = pygame.display.set_mode((screen_width, screen_height))
@@ -19,9 +21,10 @@ def main():
 
     pygame.display.update()
     while running:
+        #Get the mouse position
         pos = pygame.mouse.get_pos()
         pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
-
+        #Check if the mouse position is in the boundary
         if Rectplace.collidepoint(pos) and (pressed1 or pressed2 or pressed3):
             print("Start")
             return cc.main()
