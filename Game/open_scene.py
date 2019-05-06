@@ -15,8 +15,8 @@ def main():
     running = True
     line_space = 32
     basicfont = pygame.font.Font('8bitoperator.ttf', 20)
-    Rectplace = pygame.draw.rect(window, (255, 0, 0),(100, 200, 100, 100))
-    Rectplace2 = pygame.draw.rect(window, (255, 0, 0),(250, 200, 200, 100))
+    Rectplace = pygame.draw.rect(window, (0, 0, 0),(100, 200, 100, 100))
+    Rectplace2 = pygame.draw.rect(window, (0, 0, 0),(250, 200, 200, 100))
 
     st.text_ani('Ovenhouse', (0, 1), line_space,basicfont,window,screen_width, screen_height)
     st.text_ani('Start', (-100, 3), line_space,basicfont,window,screen_width, screen_height)
