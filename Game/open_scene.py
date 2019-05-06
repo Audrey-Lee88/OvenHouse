@@ -3,11 +3,6 @@ import show_text as st
 import choose_char as cc
 import instructions as ins
 
-def start():
-    return cc.main()
-def instructions():
-    return ins.main()
-
 def main():
     pygame.init()
     screen_width, screen_height = 500, 500
@@ -20,7 +15,7 @@ def main():
 
     st.text_ani('Ovenhouse', (0, 1), line_space,basicfont,window,screen_width, screen_height)
     st.text_ani('Start', (-100, 3), line_space,basicfont,window,screen_width, screen_height)
-    st.text_ani('instructions', (100, 3), line_space,basicfont,window,screen_width, screen_height)
+    st.text_ani('Instructions', (100, 3), line_space,basicfont,window,screen_width, screen_height)
 
     pygame.display.update()
     while running:
@@ -29,12 +24,12 @@ def main():
 
         if Rectplace.collidepoint(pos) and (pressed1 or pressed2 or pressed3):
             print("Start")
-            return start()
+            return cc.main()
 
         if Rectplace2.collidepoint(pos) and (pressed1 or pressed2 or pressed3):
             print("Instructions")
             running = False
-            return instructions()
+            return ins.main()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
