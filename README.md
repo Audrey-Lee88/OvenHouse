@@ -46,6 +46,7 @@ Anyone is welcome to use this code. We have opted into the Open Source Initiativ
 
 #### Acknowledgments
 Thanks to the QQ PyGame Tutorial for tips on how to create a tile based game.
+Special thanks to everyone who gave us helpful feedback regarding art-style, gameplay, and in-game mechanics.
 
 #### How to Build on the Game
 TODO: add explanation here
