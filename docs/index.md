@@ -7,7 +7,7 @@
 # Welcome to OvenHouse!
 
 <a href="https://www.youtube.com/watch?v=8nnrd6bYsGE&t=1s
-" target="_blank"><img src="https://thestoryshack.com/wp-content/uploads/2017/06/hansel-and-gretel-940x540.jpg" 
+" target="_blank"><img src="https://ibb.co/hX3TFPN" 
 alt="Hansel & Gretel" width="240" height="180" border="10" /></a>
 ## Project Description 
 
