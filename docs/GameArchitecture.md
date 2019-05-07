@@ -2,7 +2,7 @@
 
 ## Game Architecture 
 
-<p align="center"><img src="flowchart.png"/></p>
+<p align="center"><img src="Data.png"/></p>
 <p align="center">
   UML diagram of the main classes involved in the game
 </p>
