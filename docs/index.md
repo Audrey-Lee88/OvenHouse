@@ -8,7 +8,7 @@
 
 <a href="https://www.youtube.com/watch?v=8nnrd6bYsGE&t=1s
 " target="_blank"><img src="https://i.ibb.co/n3xKMHy/Screen-Shot-2019-05-06-at-8-36-08-PM.png" 
-alt="Hansel & Gretel" width="960" height="600" border="10" /></a>
+alt="YouTube Screenshot" width="480" height="300" border="1" /></a>
 ## Project Description 
 
 This is a game that creates a suspenseful experience for the player. It is based off of the Grimm Fairy Tale *Hansel and Gretel*.
