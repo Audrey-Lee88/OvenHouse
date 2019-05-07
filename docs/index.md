@@ -6,7 +6,9 @@
 
 # Welcome to OvenHouse!
 
-![Hansel & Gretel](https://thestoryshack.com/wp-content/uploads/2017/06/hansel-and-gretel-940x540.jpg)
+<a href="https://www.youtube.com/watch?v=8nnrd6bYsGE&t=1s
+" target="_blank"><img src="https://thestoryshack.com/wp-content/uploads/2017/06/hansel-and-gretel-940x540.jpg" 
+alt="Hansel & Gretel" width="240" height="180" border="10" /></a>
 ## Project Description 
 
 This is a game that creates a suspenseful experience for the player. It is based off of the Grimm Fairy Tale *Hansel and Gretel*.
