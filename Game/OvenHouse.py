@@ -7,6 +7,8 @@ through the key-hole shaped door while avoiding the witch and the minions.
 
 First level: Oven, Second level: House, Third level: Woods
 
+Thanks to QQ Pygame Tutorial for tips on creating a tile based game.
+
 @author: Audrey Lee, HK Rho, Kristtiya Guerra, & Caleb Wursten
 """
 #importing libraries
