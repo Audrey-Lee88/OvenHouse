@@ -1,0 +1,198 @@
+[level1]
+tileset = ground3.png
+map =   ..................................................
+	..................................................
+	..................................................
+	.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+	.X....e.X......s..s..h@......X........c........sX.
+        .Xs.......X...................s........s........X.
+        .X.s>.....X....X.s..........s....sXXXXX.......XXX.
+        .XXXXXX...X....X.s...........X........X......s..X.
+        .X..s...s....XXX.....................s..........X.
+        .X................s..X.....sXXXXX...............X.
+        .XXXXXXX.....XXXXs...X................XXXXX...XXX.
+        .X........s.....X..s.........s..........s.......X.
+        .X.X.XsX.X......X....X.........s....s...........X.
+        .X..........s...X.ss.X...X...........XXXXX......X.
+        .X.X..X.......................................s.X.
+        .X....X.........XXXXXXXXXX.....s................X.
+        .X.X..X......s..Xs.........................s....X.
+        .X......XXX...X.X.s......X.........s.....s......X.
+        .X.X.........XXXX...........s....s..............X.
+	.X.X....XXX.....X....XXXXX....s....XXXXXs....s..X.
+	.X.................................X............X.
+	.X....XXXXXXXX.......XXXXXs........X............X.
+	.X..s........X....s......X..s......Xs....s......X.
+	.X.k..X...XXXXXXX........X.................w..s.X.
+	.X....X..................X..s...XX....s.X.......X.
+	.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+	..................................................
+
+[level2]
+tileset = ground1.png
+map =   ..................................................
+	..................................................
+	..................................................
+	.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+	.X...............s..s..d.......................sX.
+        .X...s........................s........s........X.
+        .X.s>..k.X.X...XXs..........s.c..sXXXXX.........X.
+        .X............X.X.s.................g.......s...X.
+        .X..s...s....X.XX.......>............s..........X.
+        .X................s........sXXXXX...............X.
+        .X.X.X.X.X...X.XXs....................w.........X.
+        .X........s...X.X..s.........s..........s.......X.
+        .X.X.XsX.X......X..............s....s...........X.
+        .X..........s...X.ss.....X...XX.XXX...X.X.......X.
+        .X.X.XX.XXX.....Xs...XXXXX....................s.X.
+        .X............X.X..............s................X.
+        .X.X.XX.XXX..s.XXs...XXXXX.................s....X.
+        .X.......................X.........s.....s......X.
+        .X.XXXXXX....XXXX....XXXXX..s....s..............X.
+	.X.X.XXgXXX.....X....XXtiXX....s....XXXXXs....s.X.
+	.X....................................r.........X.
+	.X....XXXXX..............Xs.....................X.
+	.X.....e.....s....s......X..s.......s....s......X.
+	.X.h......XXXXXXX........X....................s.X.
+	.X.@.XXXX....XXXX....XXXXX..s...XX....s.XXXXXX..X.
+	.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+	..................................................
+
+[level3]
+tileset = ground2.png
+map =   ..................................................
+	..................................................
+	..................................................
+	.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+	.XXX..X.........s..s..X.X.....................s.X.
+        .Xs.......X.X...X..s...X.X....s........s......X.X.
+        .X.s>..c.X.X...XXs.....X.X..s....sXXXXX.......X.X.
+        .X.......XXX....X.s.....XX..........X........s.XX.
+        .X..s...s....X.XX....................s.........XX.
+        .X................s........sXXXXX....XXX........X.
+        .X...........X.XXs.....XXX...............X...X..X.
+        .X........s...X.X..s...XXX...s..........s....X..X.
+        .X.X.XsX.X......X..............s....s...........X.
+        .X...........s.....ss.....X.....X....XXXXX.....eX.
+        .X...............s...XX........XX.............s.X.
+        .X....h@......X.............w..s.........X......X.
+        .X...........s.XXs....................>....s...XX.
+        .XXX..XXXXX...X.X.s......X.........s.....s......X.
+        .XXX..XXX....XXXX...........s....s..............X.
+	.X..............X....XX.......s....XXXXXs....s..X.
+	.X......XXX.....................................X.
+	.X..X............XX......Xs..................X..X.
+	.X..X.>......s....s......X..s.....X.s....s...X..X.
+	.X.X......XXXXXXX........X........XX...k....XX..X.
+	.X.X...............................X........X...X.
+	.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+	..................................................
+
+[X]
+name = wall
+wall = true
+block = true
+
+[.]
+name = floor
+tile = 1,3
+
+[@]
+name = player
+tile = 2,3
+player = true
+sprite = player.png
+
+[s]
+name = fire
+tile = 2, 3
+enemy = yes
+sprite = fire.png
+
+[w]
+name = witch
+tile = 2,3
+sprite = witch.png
+witch = true
+
+[c]
+name = key
+tile = 1,3
+sprite = key1_small.png
+key = 1
+
+[k]
+name = key
+tile = 1,3
+sprite = key2_small.png
+key = 2
+
+[t]
+name = TV
+tile = 1, 3
+sprite = tv2.png
+block = true
+
+[i]
+name = TV
+tile = 1, 3
+sprite = tv1.png
+block = true
+
+
+[g]
+name = Cabinet
+tile = 0, 0
+sprite = cabinet.png
+block = true
+
+[f]
+name = carpet
+tile = 0, 0
+sprite = carpet.png
+block = false
+
+[d]
+name = Dining
+tile = 0, 0
+sprite = cabinet2.png
+block = true
+
+[r]
+name = Dresser
+tile = 0, 0
+sprite = cabinet3.png
+block = true
+
+[b]
+name = Bed
+tile = 1, 3
+sprite = bed.png
+block = true
+
+[l]
+name = light
+tile = 1, 1
+sprite = lamp.png
+block = true
+
+[e]
+name = exit
+tile = 0,1
+sprite = door.png
+exit = true
+
+[h]
+name = house
+tile = 0, 3
+sprite = house.png
+block = true
+
+[>]
+name = blood
+block = true
+tile = 3, 3
+
+
+
+
